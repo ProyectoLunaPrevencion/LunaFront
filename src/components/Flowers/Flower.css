@@ -1,0 +1,78 @@
+.container {
+  width: 50%;
+  overflow: hidden;
+}
+
+.stem {
+  animation: appear 5s forwards;
+}
+
+.low-leaf {
+  transform-origin: center;
+  animation: appearhojas 3s backwards 0.5s;
+}
+
+.tall-leaf {
+  transform-origin: center;
+  animation: appearhojas 4s backwards 1s;
+}
+
+.top-leaf {
+  transform-origin: center;
+  animation: appearhojas 5s backwards 0.4s;
+}
+
+.flower-animation-bottom {
+  transform-origin: center;
+  animation: prueba 2s backwards 3.9s;
+}
+
+.flower-animation {
+  transform-origin: center;
+  animation: appearflowers 3s backwards 4.5s;
+}
+
+@keyframes appear {
+  0% {
+    visibility: hidden;
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    visibility: visible;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes appearhojas {
+  0% {
+    visibility: hidden;
+    transform: scale(0);
+  }
+  100% {
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+
+@keyframes appearflowers {
+  0% {
+    visibility: hidden;
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    visibility: visible;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes prueba {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    visibility: visible;
+    clip-path: inset(0 0 0 0);
+  }
+}
