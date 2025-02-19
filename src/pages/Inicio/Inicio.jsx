@@ -5,13 +5,19 @@ import { Link } from "react-router-dom";
 
 export function Inicio() {
   return (
-    <Flex minWidth="100%" height="100vh" align="flex-start" justify="center">
+    <Flex
+      minWidth="100%"
+      height={{ initial: "100%", md: "100vh" }}
+      align="flex-start"
+      justify="center"
+      direction={{ initial: "column", md: "row" }}
+    >
       <Flex
         direction="column"
         align="center"
         justify="center"
         gap="6"
-        width="40%"
+        width={{ initial: "100%", md: "40%" }}
         p="6"
       >
         <Flower />
