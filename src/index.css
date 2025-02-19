@@ -1,5 +1,16 @@
 :root {
-  --body-background: #e5e3e6;
+  --light-grey: #e5e3e6;
+  --dark-yellow: #ffbc42;
+  --dark-orange: #f6a22d;
+  --dark-purple: #8f2d56;
+  --pink: #d81159;
+  --light-pink: #ea7e89;
+  --dark-green: #218380;
+  --lavander: #879bf4;
+  --light-lavander: #a1aff6;
+  --blue: #73d2de;
+  --dark-blue: #0f121f;
+  --white: #ffffff;
 }
 
 @font-face {
@@ -7,7 +18,7 @@
   src: url("./assets/fonts/Poppins-Regular.ttf");
 }
 
-body {
-  background-color: var(--body-background);
-  font-family: "Poppins", sans-serif;
+@font-face {
+  font-family: "Poppins Bold";
+  src: url("./assets/fonts/Poppins-Bold.ttf");
 }
