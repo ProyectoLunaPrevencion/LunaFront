@@ -3,7 +3,7 @@ import "./Flower.css";
 const Flower = () => {
   return (
     <div className="container">
-      <svg id="Capa_1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+      <svg id="Capa_1" viewBox="0 0 512 350" xmlns="http://www.w3.org/2000/svg">
         <g transform="translate(0, 20)">
           <path
             d="M255,91 L260,91 L263.727,316.525 L248.274,316.525 Z"
