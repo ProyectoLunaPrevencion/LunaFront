@@ -11,14 +11,127 @@
   --blue: #73d2de;
   --dark-blue: #0f121f;
   --white: #ffffff;
+  --main-pink: #b04c73;
 }
 
 @font-face {
   font-family: "Poppins";
   src: url("./assets/fonts/Poppins-Regular.ttf");
+  font-weight: normal;
 }
 
 @font-face {
-  font-family: "Poppins Bold";
+  font-family: "Poppins";
   src: url("./assets/fonts/Poppins-Bold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Italic.ttf");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-BoldItalic.ttf");
+  font-weight: 700;
+  font-style: italic;
+}
+
+.radix-themes {
+  --default-font-family: "Poppins", sans-serif;
+  --font-weight-bold: 700;
+}
+
+.radix-themes blockquote,
+.radix-themes .quote {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.radix-themes blockquote cite {
+  display: block;
+  margin-top: 0.8rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  font-style: italic;
+  text-align: right;
+  color: #62636c;
+}
+
+:root,
+.light,
+.light-theme {
+  --pink-1: #fefcfd;
+  --pink-2: #fdf8f9;
+  --pink-3: #fbebf0;
+  --pink-4: #f7dfe6;
+  --pink-5: #f1d3db;
+  --pink-6: #e8c4cf;
+  --pink-7: #deb3c0;
+  --pink-8: #d29dae;
+  --pink-9: #b04c73;
+  --pink-10: #a13e66;
+  --pink-11: #af4b72;
+  --pink-12: #582539;
+
+  --pink-a1: #aa005503;
+  --pink-a2: #b7002507;
+  --pink-a3: #cc004014;
+  --pink-a4: #c0003820;
+  --pink-a5: #ae002f2c;
+  --pink-a6: #9c01303b;
+  --pink-a7: #91002c4c;
+  --pink-a8: #8a002d62;
+  --pink-a9: #8f0038b3;
+  --pink-a10: #830035c1;
+  --pink-a11: #8e0037b4;
+  --pink-a12: #3c0017da;
+
+  --pink-contrast: #fff;
+  --pink-surface: #fdf6f8cc;
+  --pink-indicator: #b04c73;
+  --pink-track: #b04c73;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    :root,
+    .light,
+    .light-theme {
+      --pink-1: oklch(99.4% 0.0023 358);
+      --pink-2: oklch(98.2% 0.0056 358);
+      --pink-3: oklch(95.4% 0.0175 358);
+      --pink-4: oklch(92.5% 0.0272 358);
+      --pink-5: oklch(89.3% 0.0355 358);
+      --pink-6: oklch(85.5% 0.0431 358);
+      --pink-7: oklch(80.8% 0.053 358);
+      --pink-8: oklch(75.1% 0.0673 358);
+      --pink-9: oklch(55.7% 0.1365 358);
+      --pink-10: oklch(51.1% 0.1365 358);
+      --pink-11: oklch(55.4% 0.1365 358);
+      --pink-12: oklch(34.4% 0.0789 358);
+
+      --pink-a1: color(display-p3 0.6745 0.0235 0.349 / 0.012);
+      --pink-a2: color(display-p3 0.5804 0.0235 0.1608 / 0.028);
+      --pink-a3: color(display-p3 0.6353 0.0078 0.2157 / 0.075);
+      --pink-a4: color(display-p3 0.6157 0.0039 0.2 / 0.122);
+      --pink-a5: color(display-p3 0.5608 0.0039 0.1647 / 0.169);
+      --pink-a6: color(display-p3 0.502 0.0039 0.1765 / 0.228);
+      --pink-a7: color(display-p3 0.4627 0.0039 0.1529 / 0.291);
+      --pink-a8: color(display-p3 0.451 0.0039 0.1608 / 0.377);
+      --pink-a9: color(display-p3 0.4745 0 0.1843 / 0.679);
+      --pink-a10: color(display-p3 0.4353 0 0.1765 / 0.734);
+      --pink-a11: color(display-p3 0.4706 0 0.1843 / 0.683);
+      --pink-a12: color(display-p3 0.1961 0 0.0784 / 0.844);
+
+      --pink-contrast: #fff;
+      --pink-surface: color(display-p3 0.9843 0.9647 0.9725 / 0.8);
+      --pink-indicator: oklch(55.7% 0.1365 358);
+      --pink-track: oklch(55.7% 0.1365 358);
+    }
+  }
 }
