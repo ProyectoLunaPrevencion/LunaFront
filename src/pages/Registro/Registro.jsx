@@ -23,10 +23,10 @@ export function Registro() {
     <Section p="0">
       <Flex
         width="100%"
-        height={{ initial: "100%", md: "100vh" }}
+        height={{ initial: "100%", lg: "100vh" }}
         align="center"
         justify="center"
-        direction={{ initial: "column", md: "row" }}
+        direction={{ initial: "column", lg: "row" }}
       >
         <Box width="100%" p={{ initial: "5", xs: "7" }} maxWidth="50rem">
           <Box
@@ -202,7 +202,7 @@ export function Registro() {
           </Box>
         </Box>
 
-        <Box width={{ initial: "100%", md: "50%" }}>
+        <Box width={{ initial: "100%", lg: "50%" }}>
           <img src={signupImage} alt="Registro" />
         </Box>
       </Flex>
