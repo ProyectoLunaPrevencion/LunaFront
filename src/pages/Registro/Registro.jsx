@@ -49,7 +49,7 @@ export function Registro() {
               >
                 <Heading
                   as="h1"
-                  size={{ initial: "8", sm: "9" }}
+                  size={{ initial: "7", lg: "8", xl: "9" }}
                   align="center"
                   color="pink"
                   weight="bold"
@@ -64,7 +64,7 @@ export function Registro() {
                         gap="1"
                         width={{ initial: "100%", sm: "40%" }}
                       >
-                        <Text as="p" size={{ initial: "3", sm: "5" }}>
+                        <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
                           Nombre
                         </Text>
                         <TextField.Root placeholder="Nombre">
@@ -82,7 +82,7 @@ export function Registro() {
                         gap="1"
                         width={{ initial: "100%", sm: "60%" }}
                       >
-                        <Text as="p" size={{ initial: "3", sm: "5" }}>
+                        <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
                           Apellidos
                         </Text>
                         <TextField.Root placeholder="Apellidos">
@@ -97,7 +97,7 @@ export function Registro() {
                       </Flex>
                     </Flex>
                     <Flex direction="column" gap="1">
-                      <Text as="p" size={{ initial: "3", sm: "5" }}>
+                      <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
                         Email
                       </Text>
                       <TextField.Root placeholder="Email">
@@ -111,7 +111,7 @@ export function Registro() {
                       </TextField.Root>
                     </Flex>
                     <Flex direction="column" gap="1">
-                      <Text as="p" size={{ initial: "3", sm: "5" }}>
+                      <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
                         Teléfono
                       </Text>
                       <TextField.Root placeholder="Número de teléfono">
@@ -126,7 +126,7 @@ export function Registro() {
                     </Flex>
                     <Flex gap="5">
                       <Flex direction="column" gap="1" width="100%">
-                        <Text as="p" size={{ initial: "3", sm: "5" }}>
+                        <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
                           Curso
                         </Text>
                         <Select.Root>
@@ -140,7 +140,7 @@ export function Registro() {
                         </Select.Root>
                       </Flex>
                       <Flex direction="column" gap="1" width="100%">
-                        <Text as="p" size={{ initial: "3", sm: "5" }}>
+                        <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
                           Grupo
                         </Text>
                         <Select.Root>
@@ -155,7 +155,7 @@ export function Registro() {
                       </Flex>
                     </Flex>
                     <Flex direction="column" gap="1">
-                      <Text as="p" size={{ initial: "3", sm: "5" }}>
+                      <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
                         Contraseña
                       </Text>
                       <TextField.Root placeholder="Contraseña">
@@ -169,7 +169,7 @@ export function Registro() {
                       </TextField.Root>
                     </Flex>
                     <Flex direction="column" gap="1">
-                      <Text as="p" size={{ initial: "3", sm: "5" }}>
+                      <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
                         Repite tu contraseña
                       </Text>
                       <TextField.Root placeholder="Repite la contraseña">
@@ -182,13 +182,13 @@ export function Registro() {
                         </TextField.Slot>
                       </TextField.Root>
                     </Flex>
-                    <Button asChild size="4">
+                    <Button asChild size={{ initial: "3", lg: "4", xl: "5" }}>
                       <Link to="/registro">Regístrate</Link>
                     </Button>
                     <Text
                       as="p"
                       align="center"
-                      size={{ initial: "1", sm: "2" }}
+                      size={{ initial: "1", lg: "1", xl: "2" }}
                     >
                       ¿Ya tienes cuenta?{" "}
                       <Link href="/login" weight="bold" underline="always">
