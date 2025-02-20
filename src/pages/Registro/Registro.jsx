@@ -8,6 +8,7 @@ import {
   TextField,
   Select,
   Button,
+  Link,
 } from "@radix-ui/themes";
 import {
   PersonIcon,
@@ -15,7 +16,6 @@ import {
   MobileIcon,
   LockClosedIcon,
 } from "@radix-ui/react-icons";
-import { Link } from "react-router-dom";
 import signupImage from "../../assets/images/signup-image.jpg";
 
 export function Registro() {
@@ -54,10 +54,10 @@ export function Registro() {
                   color="pink"
                   weight="bold"
                 >
-                  Registro
+                  Crea tu cuenta
                 </Heading>
                 <Flex align="center" gap={{ initial: "3", sm: "4" }}>
-                  <Flex direction="column" gap="5">
+                  <Flex direction="column" gap={{ initial: "4", sx: "5" }}>
                     <Flex gap="5" direction={{ initial: "column", xs: "row" }}>
                       <Flex
                         direction="column"
@@ -185,6 +185,16 @@ export function Registro() {
                     <Button asChild size="4">
                       <Link to="/registro">Regístrate</Link>
                     </Button>
+                    <Text
+                      as="p"
+                      align="center"
+                      size={{ initial: "1", sm: "2" }}
+                    >
+                      ¿Ya tienes cuenta?{" "}
+                      <Link href="/login" weight="bold" underline="always">
+                        Inicia sesión
+                      </Link>
+                    </Text>
                   </Flex>
                 </Flex>
               </Flex>
