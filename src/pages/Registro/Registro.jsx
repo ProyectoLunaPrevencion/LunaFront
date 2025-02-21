@@ -5,7 +5,6 @@ import {
   Container,
   Heading,
   Text,
-  TextField,
   Select,
   Button,
   Link,
@@ -17,8 +16,48 @@ import {
   LockClosedIcon,
 } from "@radix-ui/react-icons";
 import signupImage from "../../assets/images/signup-image.jpg";
+import { useForm } from "react-hook-form";
+
+import { Input } from "./components/Input/Input";
+/* import { useNavigate } from "react-router-dom"; */
+/* import { Registro as registroService } from "../../services/authService";
+import { isAxiosError } from "axios";
+import { toast } from "react-hot-toast"; */
 
 export function Registro() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    setValue,
+  } = useForm();
+
+  /*  const navigate = useNavigate(); */
+
+  const onSubmit = async (data) => {
+    /* try {
+      await registroService(data);
+
+      toast.success("¡Registro exitoso! Ahora inicia tu sesión");
+      navigate("/signin");
+    } catch (error) {
+      if (
+        isAxiosError(error) &&
+        error.response.data.email?.includes("Ya existe Usuario con este email.")
+      ) {
+        toast.error("Ya existe un usuario con este email");
+      }
+      console.error(error);
+    } */
+    console.log(data);
+  };
+
+  const password = watch("password", "");
+
+  const curso = watch("curso");
+  const grupo = watch("grupo");
+
   return (
     <Section p="0">
       <Flex
@@ -57,145 +96,172 @@ export function Registro() {
                   Crea tu cuenta
                 </Heading>
                 <Flex align="center" gap={{ initial: "3", sm: "4" }}>
-                  <Flex direction="column" gap={{ initial: "4", sx: "5" }}>
-                    <Flex gap="5" direction={{ initial: "column", xs: "row" }}>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    <Flex direction="column" gap={{ initial: "4", sx: "5" }}>
                       <Flex
-                        direction="column"
-                        gap="1"
-                        width={{ initial: "100%", sm: "40%" }}
+                        gap="5"
+                        direction={{ initial: "column", xs: "row" }}
                       >
-                        <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
-                          Nombre
-                        </Text>
-                        <TextField.Root placeholder="Nombre">
-                          <TextField.Slot>
-                            <PersonIcon
-                              color="var(--pink-9)"
-                              height="16"
-                              width="16"
-                            />
-                          </TextField.Slot>
-                        </TextField.Root>
+                        <Input
+                          id="nombre"
+                          placeholder="Nombre"
+                          title="Nombre"
+                          registerProps={register("nombre", {
+                            required: "El nombre es obligatorio",
+                          })}
+                          errorMessage={errors.nombre?.message}
+                          Icon={PersonIcon}
+                        />
+                        <Input
+                          id="apellidos"
+                          placeholder="Apellidos"
+                          title="Apellidos"
+                          registerProps={register("apellidos", {
+                            required: "El apellido es obligatorio",
+                          })}
+                          errorMessage={errors.apellidos?.message}
+                          Icon={PersonIcon}
+                        />
                       </Flex>
-                      <Flex
-                        direction="column"
-                        gap="1"
-                        width={{ initial: "100%", sm: "60%" }}
+                      <Input
+                        id="email"
+                        placeholder="Email"
+                        title="Email"
+                        registerProps={register("email", {
+                          required: "El email es obligatorio",
+                          pattern: {
+                            value:
+                              /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                            message: "El formato del email es incorrecto",
+                          },
+                        })}
+                        errorMessage={errors.email?.message}
+                        Icon={EnvelopeClosedIcon}
+                      />
+                      <Input
+                        id="telefono"
+                        placeholder="Teléfono"
+                        title="Teléfono"
+                        registerProps={register("telefono", {
+                          required: "El teléfono es obligatorio",
+                          pattern: {
+                            value: /^\d{9}$/,
+                            message:
+                              "El formato del teléfono es incorrecto. Debe tener 9 dígitos.",
+                          },
+                        })}
+                        errorMessage={errors.telefono?.message}
+                        Icon={MobileIcon}
+                      />
+
+                      <Flex gap="5">
+                        <Flex direction="column" gap="1" width="100%">
+                          <Text
+                            as="p"
+                            size={{ initial: "2", lg: "3", xl: "5" }}
+                          >
+                            Curso
+                          </Text>
+                          <Select.Root
+                            onValueChange={(value) => setValue("curso", value)}
+                            {...register("curso", {
+                              required: "El curso es obligatorio",
+                            })}
+                          >
+                            <Select.Trigger id="curso" placeholder="Curso" />
+                            <Select.Content>
+                              <Select.Item value="ESO1">1º ESO</Select.Item>
+                              <Select.Item value="ESO2">2º ESO</Select.Item>
+                              <Select.Item value="ESO3">3º ESO</Select.Item>
+                              <Select.Item value="ESO4">4º ESO</Select.Item>
+                            </Select.Content>
+                          </Select.Root>
+                          {errors.curso && !curso && (
+                            <span className="error-message">
+                              {errors.curso.message}
+                            </span>
+                          )}
+                        </Flex>
+                        <Flex direction="column" gap="1" width="100%">
+                          <Text
+                            as="p"
+                            size={{ initial: "2", lg: "3", xl: "5" }}
+                          >
+                            Grupo
+                          </Text>
+                          <Select.Root
+                            onValueChange={(value) => setValue("grupo", value)}
+                            {...register("grupo", {
+                              required: "El grupo es obligatorio",
+                            })}
+                          >
+                            <Select.Trigger id="grupo" placeholder="Grupo" />
+                            <Select.Content>
+                              <Select.Item value="A">A</Select.Item>
+                              <Select.Item value="B">B</Select.Item>
+                              <Select.Item value="C">C</Select.Item>
+                              <Select.Item value="D">D</Select.Item>
+                            </Select.Content>
+                          </Select.Root>
+                          {errors.grupo && !grupo && (
+                            <span className="error-message">
+                              {errors.grupo.message}
+                            </span>
+                          )}
+                        </Flex>
+                      </Flex>
+                      <Input
+                        id="password"
+                        placeholder="Contraseña"
+                        title="Contraseña"
+                        registerProps={register("password", {
+                          required: "La contraseña es obligatoria",
+                          minLength: {
+                            value: 8,
+                            message:
+                              "La contraseña debe tener al menos 8 caracteres",
+                          },
+                          pattern: {
+                            value:
+                              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-])[A-Za-z\d@$!%*?&_-]+$/,
+                            message:
+                              "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial",
+                          },
+                        })}
+                        errorMessage={errors.password?.message}
+                        Icon={LockClosedIcon}
+                      />
+                      <Input
+                        id="passwordRepeat"
+                        placeholder="Repite la contraseña"
+                        title="Repite la contraseña"
+                        registerProps={register("passwordRepeat", {
+                          required: "Debe repetir la contraseña",
+                          validate: (value) =>
+                            value === password ||
+                            "Las contraseñas no coinciden",
+                        })}
+                        errorMessage={errors.passwordRepeat?.message}
+                        Icon={LockClosedIcon}
+                      />
+                      <Button
+                        size={{ initial: "3", lg: "4", xl: "5" }}
+                        type="submit"
                       >
-                        <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
-                          Apellidos
-                        </Text>
-                        <TextField.Root placeholder="Apellidos">
-                          <TextField.Slot>
-                            <PersonIcon
-                              color="var(--pink-9)"
-                              height="16"
-                              width="16"
-                            />
-                          </TextField.Slot>
-                        </TextField.Root>
-                      </Flex>
-                    </Flex>
-                    <Flex direction="column" gap="1">
-                      <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
-                        Email
+                        Regístrate
+                      </Button>
+                      <Text
+                        as="p"
+                        align="center"
+                        size={{ initial: "1", lg: "1", xl: "2" }}
+                      >
+                        ¿Ya tienes cuenta?{" "}
+                        <Link href="/login" weight="bold" underline="always">
+                          Inicia sesión
+                        </Link>
                       </Text>
-                      <TextField.Root placeholder="Email">
-                        <TextField.Slot>
-                          <EnvelopeClosedIcon
-                            color="var(--pink-9)"
-                            height="16"
-                            width="16"
-                          />
-                        </TextField.Slot>
-                      </TextField.Root>
                     </Flex>
-                    <Flex direction="column" gap="1">
-                      <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
-                        Teléfono
-                      </Text>
-                      <TextField.Root placeholder="Número de teléfono">
-                        <TextField.Slot>
-                          <MobileIcon
-                            color="var(--pink-9)"
-                            height="16"
-                            width="16"
-                          />
-                        </TextField.Slot>
-                      </TextField.Root>
-                    </Flex>
-                    <Flex gap="5">
-                      <Flex direction="column" gap="1" width="100%">
-                        <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
-                          Curso
-                        </Text>
-                        <Select.Root>
-                          <Select.Trigger placeholder="Curso" />
-                          <Select.Content>
-                            <Select.Item value="1ESO">1º ESO</Select.Item>
-                            <Select.Item value="2ESO">2º ESO</Select.Item>
-                            <Select.Item value="3ESO">3º ESO</Select.Item>
-                            <Select.Item value="4ESO">4º ESO</Select.Item>
-                          </Select.Content>
-                        </Select.Root>
-                      </Flex>
-                      <Flex direction="column" gap="1" width="100%">
-                        <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
-                          Grupo
-                        </Text>
-                        <Select.Root>
-                          <Select.Trigger placeholder="Grupo" />
-                          <Select.Content>
-                            <Select.Item value="GA">A</Select.Item>
-                            <Select.Item value="GB">B</Select.Item>
-                            <Select.Item value="GC">C</Select.Item>
-                            <Select.Item value="GD">D</Select.Item>
-                          </Select.Content>
-                        </Select.Root>
-                      </Flex>
-                    </Flex>
-                    <Flex direction="column" gap="1">
-                      <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
-                        Contraseña
-                      </Text>
-                      <TextField.Root placeholder="Contraseña">
-                        <TextField.Slot>
-                          <LockClosedIcon
-                            color="var(--pink-9)"
-                            height="16"
-                            width="16"
-                          />
-                        </TextField.Slot>
-                      </TextField.Root>
-                    </Flex>
-                    <Flex direction="column" gap="1">
-                      <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
-                        Repite tu contraseña
-                      </Text>
-                      <TextField.Root placeholder="Repite la contraseña">
-                        <TextField.Slot>
-                          <LockClosedIcon
-                            color="var(--pink-9)"
-                            height="16"
-                            width="16"
-                          />
-                        </TextField.Slot>
-                      </TextField.Root>
-                    </Flex>
-                    <Button asChild size={{ initial: "3", lg: "4", xl: "5" }}>
-                      <Link to="/registro">Regístrate</Link>
-                    </Button>
-                    <Text
-                      as="p"
-                      align="center"
-                      size={{ initial: "1", lg: "1", xl: "2" }}
-                    >
-                      ¿Ya tienes cuenta?{" "}
-                      <Link href="/login" weight="bold" underline="always">
-                        Inicia sesión
-                      </Link>
-                    </Text>
-                  </Flex>
+                  </form>
                 </Flex>
               </Flex>
             </Container>
