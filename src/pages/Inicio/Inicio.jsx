@@ -33,8 +33,8 @@ export function Inicio() {
             p="7"
           >
             <Flower />
-            <Flex direction="column" textAlign="start" gap="3" align="start">
-              <Blockquote color="pink" size="5" italic>
+            <Flex direction="column" gap="3" align="start">
+              <Blockquote color="pink" size="5" italic="true">
                 “Cuando la conversación con un otro se vuelve refugio. Eso,
                 también es estar en casa.” <cite>Ada Luz Márquez</cite>
               </Blockquote>
