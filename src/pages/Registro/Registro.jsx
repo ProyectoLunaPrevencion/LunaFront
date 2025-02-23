@@ -8,12 +8,14 @@ import {
   Select,
   Button,
   Link,
+  Tooltip,
 } from "@radix-ui/themes";
 import {
   PersonIcon,
   EnvelopeClosedIcon,
   MobileIcon,
   LockClosedIcon,
+  InfoCircledIcon,
 } from "@radix-ui/react-icons";
 import signupImage from "../../assets/images/signup-image.jpg";
 import { useForm } from "react-hook-form";
@@ -97,17 +99,23 @@ export function Registro() {
                 </Heading>
                 <Flex align="center" gap={{ initial: "3", sm: "4" }}>
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <Flex direction="column" gap={{ initial: "4", sx: "5" }}>
+                    <Flex direction="column" gap={{ initial: "3", xs: "4" }}>
                       <Flex
-                        gap="5"
+                        gap={{ initial: "3", xs: "5" }}
                         direction={{ initial: "column", xs: "row" }}
                       >
                         <Input
                           id="nombre"
                           placeholder="Nombre"
                           title="Nombre"
+                          infocontent="Solo se permiten letras y espacios"
                           registerProps={register("nombre", {
                             required: "El nombre es obligatorio",
+                            pattern: {
+                              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,
+                              message:
+                                "El nombre solo puede contener letras y espacios",
+                            },
                           })}
                           errorMessage={errors.nombre?.message}
                           Icon={PersonIcon}
@@ -116,8 +124,14 @@ export function Registro() {
                           id="apellidos"
                           placeholder="Apellidos"
                           title="Apellidos"
+                          infocontent="Solo se permiten letras y espacios"
                           registerProps={register("apellidos", {
                             required: "El apellido es obligatorio",
+                            pattern: {
+                              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,
+                              message:
+                                "El apellido solo puede contener letras y espacios",
+                            },
                           })}
                           errorMessage={errors.apellidos?.message}
                           Icon={PersonIcon}
@@ -127,12 +141,13 @@ export function Registro() {
                         id="email"
                         placeholder="Email"
                         title="Email"
+                        infocontent="Solo se permiten correos de @virgendelcarmen.com"
                         registerProps={register("email", {
                           required: "El email es obligatorio",
                           pattern: {
-                            value:
-                              /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                            message: "El formato del email es incorrecto",
+                            value: /^[a-zA-Z0-9._%+-]+@virgendelcarmen\.com$/,
+                            message:
+                              "El email debe pertenecer a @virgendelcarmen.com",
                           },
                         })}
                         errorMessage={errors.email?.message}
@@ -142,12 +157,12 @@ export function Registro() {
                         id="telefono"
                         placeholder="Teléfono"
                         title="Teléfono"
+                        infocontent="Debe contener exactamente 9 dígitos numéricos"
                         registerProps={register("telefono", {
-                          required: "El teléfono es obligatorio",
                           pattern: {
                             value: /^\d{9}$/,
                             message:
-                              "El formato del teléfono es incorrecto. Debe tener 9 dígitos.",
+                              "El formato del teléfono es incorrecto. Debe tener 9 dígitos",
                           },
                         })}
                         errorMessage={errors.telefono?.message}
@@ -156,12 +171,21 @@ export function Registro() {
 
                       <Flex gap="5">
                         <Flex direction="column" gap="1" width="100%">
-                          <Text
-                            as="p"
-                            size={{ initial: "2", lg: "3", xl: "5" }}
-                          >
-                            Curso
-                          </Text>
+                          <Flex gap="1" align="center">
+                            <Text
+                              as="p"
+                              size={{ initial: "2", lg: "3", xl: "5" }}
+                            >
+                              Curso
+                            </Text>
+                            <Tooltip content="Selecciona el curso en el que estás matriculado">
+                              <InfoCircledIcon
+                                color="grey"
+                                height="16"
+                                width="16"
+                              />
+                            </Tooltip>
+                          </Flex>
                           <Select.Root
                             onValueChange={(value) => setValue("curso", value)}
                             {...register("curso", {
@@ -177,18 +201,27 @@ export function Registro() {
                             </Select.Content>
                           </Select.Root>
                           {errors.curso && !curso && (
-                            <span className="error-message">
+                            <Text as="span" color="red" size="1">
                               {errors.curso.message}
-                            </span>
+                            </Text>
                           )}
                         </Flex>
                         <Flex direction="column" gap="1" width="100%">
-                          <Text
-                            as="p"
-                            size={{ initial: "2", lg: "3", xl: "5" }}
-                          >
-                            Grupo
-                          </Text>
+                          <Flex gap="1" align="center">
+                            <Text
+                              as="p"
+                              size={{ initial: "2", lg: "3", xl: "5" }}
+                            >
+                              Grupo
+                            </Text>
+                            <Tooltip content="Selecciona tu grupo dentro del curso">
+                              <InfoCircledIcon
+                                color="grey"
+                                height="16"
+                                width="16"
+                              />
+                            </Tooltip>
+                          </Flex>
                           <Select.Root
                             onValueChange={(value) => setValue("grupo", value)}
                             {...register("grupo", {
@@ -204,9 +237,9 @@ export function Registro() {
                             </Select.Content>
                           </Select.Root>
                           {errors.grupo && !grupo && (
-                            <span className="error-message">
+                            <Text as="span" color="red" size="1">
                               {errors.grupo.message}
-                            </span>
+                            </Text>
                           )}
                         </Flex>
                       </Flex>
@@ -214,6 +247,7 @@ export function Registro() {
                         id="password"
                         placeholder="Contraseña"
                         title="Contraseña"
+                        infocontent="Debe tener al menos 8 caracteres"
                         registerProps={register("password", {
                           required: "La contraseña es obligatoria",
                           minLength: {
@@ -222,10 +256,9 @@ export function Registro() {
                               "La contraseña debe tener al menos 8 caracteres",
                           },
                           pattern: {
-                            value:
-                              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_-])[A-Za-z\d@$!%*?&_-]+$/,
+                            value: /^.{8,}$/,
                             message:
-                              "La contraseña debe contener al menos una letra mayúscula, una letra minúscula, un número y un carácter especial",
+                              "La contraseña debe tener al menos 8 caracteres",
                           },
                         })}
                         errorMessage={errors.password?.message}
@@ -235,8 +268,9 @@ export function Registro() {
                         id="passwordRepeat"
                         placeholder="Repite la contraseña"
                         title="Repite la contraseña"
+                        infocontent="Debe coincidir con la contraseña anterior"
                         registerProps={register("passwordRepeat", {
-                          required: "Debe repetir la contraseña",
+                          required: "La contraseña no coincide",
                           validate: (value) =>
                             value === password ||
                             "Las contraseñas no coinciden",
