@@ -40,7 +40,7 @@ export function Registro() {
       await registroService(data);
 
       toast.success("¡Registro exitoso! Ahora inicia tu sesión");
-      navigate("/signin");
+      navigate("/");
     } catch (error) {
       if (
         isAxiosError(error) &&

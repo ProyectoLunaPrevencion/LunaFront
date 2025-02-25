@@ -14,10 +14,6 @@
   --main-pink: #b04c73;
 }
 
-.background {
-  background-color: #fffeb1;
-}
-
 @font-face {
   font-family: "Poppins";
   src: url("./assets/fonts/Poppins-Regular.ttf");

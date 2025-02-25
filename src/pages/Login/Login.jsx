@@ -13,7 +13,7 @@ import signupImage from "../../assets/images/signup-image.jpg";
 import { useForm } from "react-hook-form";
 import { Input } from "../Registro/components/Input/Input";
 import { useNavigate } from "react-router-dom";
-import { getUserData as loginService } from "../../services/authService";
+import { logIn as loginService } from "../../services/authService";
 import { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
 
@@ -30,7 +30,7 @@ export function Login() {
     try {
       await loginService(data);
       toast.success("¡Inicio de sesión exitoso!");
-      navigate("/pizarra");
+      navigate("/");
     } catch (error) {
       if (isAxiosError(error) && error.response?.data?.message) {
         toast.error(error.response.data.message);
@@ -88,9 +88,10 @@ export function Login() {
                         registerProps={register("email", {
                           required: "El email es obligatorio",
                           pattern: {
-                            value: /^[a-zA-Z0-9._%+-]+@virgendelcarmen\.com$/,
+                            value:
+                              /^[a-zA-Z0-9._%+-]+@colegiovirgendelcarmen\.com$/,
                             message:
-                              "El email debe pertenecer a @virgendelcarmen.com",
+                              "El email debe pertenecer a @colegiovirgendelcarmen.com",
                           },
                         })}
                         errorMessage={errors.email?.message}

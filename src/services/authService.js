@@ -19,14 +19,14 @@ export async function Registro({
       curso,
       grupo,
       password,
-      rol: "alumno",
+      rol: "ESTUDIANTE",
     }
   );
 
   return response.data;
 }
 
-export async function signIn(params) {
+export async function logIn(params) {
   const response = await axios.post("http://127.0.0.1:8080/api/auth/login", {
     email: params.email,
     password: params.password,
@@ -36,7 +36,7 @@ export async function signIn(params) {
 }
 
 export async function getUserData(access) {
-  const response = await axios.get("http://127.0.0.1:8080/api/seguimiento/", {
+  const response = await axios.get("http://127.0.0.1:8080/api/usuarios", {
     headers: {
       Authorization: `Bearer ${access}`,
     },
