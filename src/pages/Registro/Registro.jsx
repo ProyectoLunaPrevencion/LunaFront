@@ -138,13 +138,14 @@ export function Registro() {
                         id="email"
                         placeholder="Email"
                         title="Email"
-                        infocontent="Solo se permiten correos de @virgendelcarmen.com"
+                        infocontent="Solo se permiten correos de @colegiovirgendelcarmen.com"
                         registerProps={register("email", {
                           required: "El email es obligatorio",
                           pattern: {
-                            value: /^[a-zA-Z0-9._%+-]+@virgendelcarmen\.com$/,
+                            value:
+                              /^[a-zA-Z0-9._%+-]+@colegiovirgendelcarmen\.com$/,
                             message:
-                              "El email debe pertenecer a @virgendelcarmen.com",
+                              "El email debe pertenecer a @colegiovirgendelcarmen.com",
                           },
                         })}
                         errorMessage={errors.email?.message}
@@ -229,18 +230,18 @@ export function Registro() {
                         id="password"
                         placeholder="Contraseña"
                         title="Contraseña"
-                        infocontent="Debe tener al menos 8 caracteres"
+                        infocontent="Debe tener al menos 8 caracteres, 1 minúscula, 1 mayúscula y 1 caracter especial"
                         registerProps={register("password", {
                           required: "La contraseña es obligatoria",
                           minLength: {
                             value: 8,
                             message:
-                              "La contraseña debe tener al menos 8 caracteres",
+                              "La contraseña debe tener al menos 8 caracteres, 1 minúscula, 1 mayúscula y 1 caracter especial",
                           },
                           pattern: {
-                            value: /^.{8,}$/,
+                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/,
                             message:
-                              "La contraseña debe tener al menos 8 caracteres",
+                              "La contraseña debe tener al menos 8 caracteres, 1 minúscula, 1 mayúscula y 1 caracter especial",
                           },
                         })}
                         errorMessage={errors.password?.message}

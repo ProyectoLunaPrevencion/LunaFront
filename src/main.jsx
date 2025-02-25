@@ -10,7 +10,7 @@ import "./index.css";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Theme accentColor="pink">
+      <Theme accentColor="pink" className="background">
         <AppRoutes />
       </Theme>
     </BrowserRouter>
