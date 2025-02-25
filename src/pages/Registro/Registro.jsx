@@ -8,23 +8,21 @@ import {
   Select,
   Button,
   Link,
-  Tooltip,
 } from "@radix-ui/themes";
 import {
   PersonIcon,
   EnvelopeClosedIcon,
   MobileIcon,
   LockClosedIcon,
-  InfoCircledIcon,
 } from "@radix-ui/react-icons";
 import signupImage from "../../assets/images/signup-image.jpg";
 import { useForm } from "react-hook-form";
 
 import { Input } from "./components/Input/Input";
-/* import { useNavigate } from "react-router-dom"; */
-/* import { Registro as registroService } from "../../services/authService";
+import { useNavigate } from "react-router-dom";
+import { Registro as registroService } from "../../services/authService";
 import { isAxiosError } from "axios";
-import { toast } from "react-hot-toast"; */
+import { toast } from "react-hot-toast";
 
 export function Registro() {
   const {
@@ -35,10 +33,10 @@ export function Registro() {
     setValue,
   } = useForm();
 
-  /*  const navigate = useNavigate(); */
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    /* try {
+    try {
       await registroService(data);
 
       toast.success("¡Registro exitoso! Ahora inicia tu sesión");
@@ -46,13 +44,14 @@ export function Registro() {
     } catch (error) {
       if (
         isAxiosError(error) &&
-        error.response.data.email?.includes("Ya existe Usuario con este email.")
+        error.response?.data?.email?.includes(
+          "Ya existe Usuario con este email."
+        )
       ) {
         toast.error("Ya existe un usuario con este email");
       }
       console.error(error);
-    } */
-    console.log(data);
+    }
   };
 
   const password = watch("password", "");
@@ -108,7 +107,6 @@ export function Registro() {
                           id="nombre"
                           placeholder="Nombre"
                           title="Nombre"
-                          infocontent="Solo se permiten letras y espacios"
                           registerProps={register("nombre", {
                             required: "El nombre es obligatorio",
                             pattern: {
@@ -124,7 +122,6 @@ export function Registro() {
                           id="apellidos"
                           placeholder="Apellidos"
                           title="Apellidos"
-                          infocontent="Solo se permiten letras y espacios"
                           registerProps={register("apellidos", {
                             required: "El apellido es obligatorio",
                             pattern: {
@@ -157,7 +154,6 @@ export function Registro() {
                         id="telefono"
                         placeholder="Teléfono"
                         title="Teléfono"
-                        infocontent="Debe contener exactamente 9 dígitos numéricos"
                         registerProps={register("telefono", {
                           pattern: {
                             value: /^\d{9}$/,
@@ -178,13 +174,6 @@ export function Registro() {
                             >
                               Curso
                             </Text>
-                            <Tooltip content="Selecciona el curso en el que estás matriculado">
-                              <InfoCircledIcon
-                                color="grey"
-                                height="16"
-                                width="16"
-                              />
-                            </Tooltip>
                           </Flex>
                           <Select.Root
                             onValueChange={(value) => setValue("curso", value)}
@@ -214,13 +203,6 @@ export function Registro() {
                             >
                               Grupo
                             </Text>
-                            <Tooltip content="Selecciona tu grupo dentro del curso">
-                              <InfoCircledIcon
-                                color="grey"
-                                height="16"
-                                width="16"
-                              />
-                            </Tooltip>
                           </Flex>
                           <Select.Root
                             onValueChange={(value) => setValue("grupo", value)}
@@ -263,6 +245,7 @@ export function Registro() {
                         })}
                         errorMessage={errors.password?.message}
                         Icon={LockClosedIcon}
+                        type="password"
                       />
                       <Input
                         id="passwordRepeat"
@@ -277,6 +260,7 @@ export function Registro() {
                         })}
                         errorMessage={errors.passwordRepeat?.message}
                         Icon={LockClosedIcon}
+                        type="password"
                       />
                       <Button
                         size={{ initial: "3", lg: "4", xl: "5" }}

@@ -1,16 +1,25 @@
 import axios from "axios";
 
-export async function Registro(params) {
+export async function Registro({
+  nombre,
+  apellidos,
+  email,
+  telefono,
+  curso,
+  grupo,
+  password,
+}) {
   const response = await axios.post(
-    "http://127.0.0.1:8080/api/usuarios/registro/",
+    "http://127.0.0.1:8080/api/usuarios/registro",
     {
-      nombre: params.nombre,
-      apellidos: params.apellidos,
-      email: params.email,
-      telefono: params.telefono,
-      curso: params.curso,
-      grupo: params.grupo,
-      password: params.password,
+      nombre,
+      apellidos,
+      email,
+      telefono,
+      curso,
+      grupo,
+      password,
+      rol: "alumno",
     }
   );
 
