@@ -35,21 +35,9 @@ export async function logIn(params) {
   return response.data;
 }
 
-export async function getUserData(access) {
-  const response = await axios.get("http://127.0.0.1:8080/api/usuarios", {
-    headers: {
-      Authorization: `Bearer ${access}`,
-    },
-  });
-
-  return response.data;
-}
-
-// A la espera del Backend
-export async function signInRefresh(refresh) {
-  const response = await fetch("http://127.0.0.1:8080/api/login/refresh", {
-    refresh,
-  });
-
+export async function getUserById() {
+  const response = await axios.get(
+    "http://127.0.0.1:8080/api/auth/usuarios/${id_usuario}"
+  );
   return response.data;
 }
