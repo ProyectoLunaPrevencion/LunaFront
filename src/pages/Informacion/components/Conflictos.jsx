@@ -43,7 +43,7 @@ export function Conflictos() {
           style={{ justifyItems: "center", alignItems: "start" }}
         >
           <Flex direction="column" align="center" gap="2">
-            <img width="150px" src={uno} alt="Registro" />
+            <img width="150px" src={uno} alt="Primero" />
             <Text
               align="center"
               as="p"
@@ -64,7 +64,7 @@ export function Conflictos() {
             </Text>
           </Flex>
           <Flex direction="column" align="center" gap="2">
-            <img width="150px" src={dos} alt="Registro" />
+            <img width="150px" src={dos} alt="Segundo" />
             <Text
               align="center"
               as="p"
@@ -84,7 +84,7 @@ export function Conflictos() {
             </Text>
           </Flex>
           <Flex direction="column" align="center" gap="2">
-            <img width="150px" src={tres} alt="Registro" />
+            <img width="150px" src={tres} alt="Tercero" />
             <Text
               align="center"
               as="p"
@@ -124,6 +124,7 @@ export function Conflictos() {
                   as="p"
                   color="gray"
                   size={{ initial: "3", lg: "4", xl: "5" }}
+                  align={{ initial: "center", sm: "left" }}
                 >
                   Este tipo de conflicto ocurre cuando hay peleas o problemas
                   entre compañeros/as utilizando las redes sociales o cualquier
@@ -141,7 +142,7 @@ export function Conflictos() {
                       <Flex wrap="wrap">
                         <img
                           src={RRSS}
-                          alt="Registro"
+                          alt="Redes Sociales"
                           style={{
                             borderRadius: "var(--radius-2)",
                             height: "300px",
@@ -183,6 +184,7 @@ export function Conflictos() {
                   as="p"
                   color="gray"
                   size={{ initial: "3", lg: "4", xl: "5" }}
+                  align={{ initial: "center", sm: "left" }}
                 >
                   El <Strong>objetivo</Strong> de estas acciones es hacer sentir
                   mal a la otra persona, dañando su autoestima y provocando
@@ -197,6 +199,7 @@ export function Conflictos() {
                   as="p"
                   color="gray"
                   size={{ initial: "3", lg: "4", xl: "5" }}
+                  align={{ initial: "center", sm: "left" }}
                 >
                   Es cuando una persona agrede a otra de forma directa, causando
                   daño a su cuerpo o sus cosas. Puede ocurrir de distintas
@@ -215,7 +218,7 @@ export function Conflictos() {
                       <Flex wrap="wrap">
                         <img
                           src={conflicto}
-                          alt="Registro"
+                          alt="Conflicto físico"
                           style={{
                             borderRadius: "var(--radius-2)",
                             height: "350px",
@@ -258,6 +261,7 @@ export function Conflictos() {
                   as="p"
                   color="gray"
                   size={{ initial: "3", lg: "4", xl: "5" }}
+                  align={{ initial: "center", sm: "left" }}
                 >
                   Este tipo de conflicto no solo causa daño físico, sino que
                   también puede afectar la autoestima y el bienestar emocional
@@ -271,6 +275,7 @@ export function Conflictos() {
                   as="p"
                   color="gray"
                   size={{ initial: "3", lg: "4", xl: "5" }}
+                  align={{ initial: "center", sm: "left" }}
                 >
                   Es cuando una persona lastima a otra sin necesidad de golpes,
                   usando palabras, actitudes o comportamientos que afectan su
@@ -289,7 +294,7 @@ export function Conflictos() {
                       <Flex wrap="wrap">
                         <img
                           src={conflicto}
-                          alt="Registro"
+                          alt="Conflicto Psicológico"
                           style={{
                             borderRadius: "var(--radius-2)",
                             height: "350px",
@@ -334,6 +339,7 @@ export function Conflictos() {
                   as="p"
                   color="gray"
                   size={{ initial: "3", lg: "4", xl: "5" }}
+                  align={{ initial: "center", sm: "left" }}
                 >
                   Este tipo de agresión puede generar mucha tristeza, ansiedad y
                   afectar la confianza en uno mismo.

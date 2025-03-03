@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export function CardInfo({ Icon, title, description }) {
   return (
-    <Box maxWidth="650px">
+    <Box maxWidth="650px" width="100%">
       <Card>
         <Flex gap="4" align="center">
           <Icon width="35" height="35" color="var(--orange-9)"></Icon>
