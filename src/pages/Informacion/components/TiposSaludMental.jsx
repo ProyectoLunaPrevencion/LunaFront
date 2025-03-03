@@ -72,7 +72,7 @@ export function TiposSaludMental({
                   src={image}
                   alt={altImage}
                   style={{
-                    maxWidth: "350px",
+                    maxWidth: "300px",
                     maxHeight: "200px",
                     filter: "brightness(1)",
                     mixBlendMode: "multiply",

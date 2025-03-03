@@ -9,7 +9,7 @@ import {
   Link,
 } from "@radix-ui/themes";
 import { EnvelopeClosedIcon, LockClosedIcon } from "@radix-ui/react-icons";
-import signupImage from "../../assets/images/signup-image.jpg";
+import signupImage from "../../assets/images/Login.jpg";
 import { useForm } from "react-hook-form";
 import { Input } from "../Registro/components/Input/Input";
 import { useNavigate } from "react-router-dom";

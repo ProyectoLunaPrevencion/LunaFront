@@ -16,7 +16,8 @@ import uno from "../../../assets/images/forma-1.png";
 import dos from "../../../assets/images/forma-2.png";
 import tres from "../../../assets/images/forma-3.png";
 import RRSS from "../../../assets/images/RRSS.jpg";
-import conflicto from "../../../assets/images/Conflicto-fisico.jpg";
+import conflictoPsicologico from "../../../assets/images/Conflicto-psicologico.jpg";
+import conflictoFisico from "../../../assets/images/Conflicto-fisico.jpg";
 
 export function Conflictos() {
   return (
@@ -217,11 +218,11 @@ export function Conflictos() {
                     >
                       <Flex wrap="wrap">
                         <img
-                          src={conflicto}
+                          src={conflictoFisico}
                           alt="Conflicto físico"
                           style={{
                             borderRadius: "var(--radius-2)",
-                            height: "350px",
+                            height: "300px",
                             filter: "brightness(1)",
                             mixBlendMode: "multiply",
                           }}
@@ -293,11 +294,11 @@ export function Conflictos() {
                     >
                       <Flex wrap="wrap">
                         <img
-                          src={conflicto}
+                          src={conflictoPsicologico}
                           alt="Conflicto Psicológico"
                           style={{
                             borderRadius: "var(--radius-2)",
-                            height: "350px",
+                            height: "300px",
                             filter: "brightness(1)",
                             mixBlendMode: "multiply",
                           }}

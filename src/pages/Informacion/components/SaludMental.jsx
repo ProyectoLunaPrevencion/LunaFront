@@ -2,6 +2,7 @@ import { Box, Heading, Flex, Container, Strong, Quote } from "@radix-ui/themes";
 import { TiposSaludMental } from "./TiposSaludMental";
 import ansiedad from "../../../assets/images/Ansiedad.jpg";
 import agobio from "../../../assets/images/Agobio.jpg";
+import tristezaContinuada from "../../../assets/images/Tristeza-continuada.jpg";
 
 export function SaludMental() {
   return (
@@ -36,6 +37,8 @@ export function SaludMental() {
               descriptions={[
                 "Estado emocional que va más allá de sentirse triste o desanimado por un corto tiempo. Es como llevar una nube negra encima que no se va, incluso cuando las cosas parecen ir bien. Algunos síntomas son: falta de energía, pérdida de interés…",
               ]}
+              image={tristezaContinuada}
+              alt="Imagen de una persona con tristeza continuada"
             />
             <TiposSaludMental
               title="Pensamientos de desesperanza"
@@ -74,10 +77,11 @@ export function SaludMental() {
                   <Strong>
                     <Quote>El amor verdadero es sufrir</Quote>
                   </Strong>
-                  ,
+                  ,{" "}
                   <Strong>
                     <Quote>El amor lo puede todo</Quote>
                   </Strong>
+                  ,{" "}
                   <Strong>
                     <Quote>Tu pareja debe ser tu otra mitad</Quote>
                   </Strong>

@@ -110,10 +110,19 @@ export function Inicio() {
                   >
                     Aquí estamos para ayudarte
                   </Text>
-
-                  <Button asChild size="4">
-                    <Link to="/registro">Regístrate</Link>
-                  </Button>
+                  <Box>
+                    <Flex
+                      gap={{ initial: "5", xs: "8" }}
+                      direction={{ initial: "column", xs: "row" }}
+                    >
+                      <Button asChild size="4">
+                        <Link to="/login">Inicia sesión</Link>
+                      </Button>
+                      <Button asChild size="4">
+                        <Link to="/registro">Regístrate</Link>
+                      </Button>
+                    </Flex>
+                  </Box>
                 </Flex>
               </Container>
             </Box>

@@ -15,7 +15,7 @@ import {
   MobileIcon,
   LockClosedIcon,
 } from "@radix-ui/react-icons";
-import signupImage from "../../assets/images/signup-image.jpg";
+import signupImage from "../../assets/images/Registro.jpg";
 import { useForm } from "react-hook-form";
 
 import { Input } from "./components/Input/Input";
