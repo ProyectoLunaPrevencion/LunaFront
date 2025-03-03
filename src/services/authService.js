@@ -35,9 +35,9 @@ export async function logIn(params) {
   return response.data;
 }
 
-export async function getUserById() {
+export async function getUserById(id_usuario) {
   const response = await axios.get(
-    "http://127.0.0.1:8080/api/auth/usuarios/${id_usuario}"
+    `http://127.0.0.1:8080/api/auth/usuarios/${id_usuario}`
   );
   return response.data;
 }
