@@ -6,7 +6,7 @@ import { Flex, Box, Text, Button, DropdownMenu, Link } from "@radix-ui/themes";
 import "./Header.css";
 import { AvatarIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 
-export default function Header() {
+export function Header() {
   const { user } = useContext(AccessContext);
   const [userName, setUserName] = useState("");
 

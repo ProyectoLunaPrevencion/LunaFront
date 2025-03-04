@@ -12,10 +12,12 @@ import {
 } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer";
+import { Header } from "../../components/Header/Header.jsx";
 
 export function Inicio() {
   return (
     <>
+      <Header />
       <Section p="0">
         <Flex
           minWidth="100%"

@@ -10,7 +10,6 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter } from "react-router-dom";
 import "./styles/reset.css";
 import AppRoutes from "./routes/AppRoutes.jsx";
-import Header from "./components/Header/Header.jsx";
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
 import "./index.css";
@@ -54,7 +53,6 @@ function App() {
     <AccessContext.Provider value={contextValue}>
       <Theme accentColor="pink" className="background">
         <Toaster />
-        <Header />
         <AppRoutes />
       </Theme>
     </AccessContext.Provider>
