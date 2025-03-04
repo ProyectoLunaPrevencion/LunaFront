@@ -2,10 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import logoApp from "../../assets/images/Logotipo-AppLuna.png";
 import { getUserById } from "../../services/authService";
 import { AccessContext } from "../../main";
-import { Flex, Box, Text, Button, DropdownMenu } from "@radix-ui/themes";
+import { Flex, Box, Text, Button, DropdownMenu, Link } from "@radix-ui/themes";
 import "./Header.css";
 import { AvatarIcon, ChevronDownIcon } from "@radix-ui/react-icons";
-import { Link } from "react-router-dom";
 
 export default function Header() {
   const { user } = useContext(AccessContext);
@@ -38,7 +37,18 @@ export default function Header() {
           </Flex>
         </Box>
         <Box>
-          <h1>INFORMACIÓN</h1>
+          <Flex justify="center" gap="4">
+            <Link href="/" weight="bold" style={{ textTransform: "uppercase" }}>
+              Inicio
+            </Link>
+            <Link
+              href="/informacion"
+              weight="bold"
+              style={{ textTransform: "uppercase" }}
+            >
+              Información
+            </Link>
+          </Flex>
         </Box>
         <Box>
           {userName ? (
@@ -58,7 +68,7 @@ export default function Header() {
             </DropdownMenu.Root>
           ) : (
             <Button variant="solid">
-              <Link to="/login" style={{ color: "white" }}>
+              <Link href="/login" underline="none" style={{ color: "white" }}>
                 Inicia sesión
               </Link>
             </Button>
