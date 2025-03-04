@@ -1,0 +1,40 @@
+.date-picker-wrapper {
+  width: 100%;
+}
+
+.date-picker-input {
+  width: 100%;
+  color: var(--gray-a10);
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  border: none;
+  box-shadow: inset 0 0 0 1px var(--gray-a7);
+  border-radius: 0.25rem;
+  padding: 0.4rem 0.75rem;
+}
+
+.date-picker-input:focus {
+  border-color: var(--accent-8);
+  outline: none;
+}
+
+.react-datepicker__header,
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--pink-calendar);
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day--keyboard-selected {
+  color: #fff;
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--pink-calendar);
+}
+
+.mi-refugio {
+  background-image: url("../../assets/images/fondo.jpg");
+  background-size: cover;
+  background-position: center;
+}
