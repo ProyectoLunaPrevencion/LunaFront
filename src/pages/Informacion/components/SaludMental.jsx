@@ -3,6 +3,7 @@ import { TiposSaludMental } from "./TiposSaludMental";
 import ansiedad from "../../../assets/images/Ansiedad.jpg";
 import agobio from "../../../assets/images/Agobio.jpg";
 import tristezaContinuada from "../../../assets/images/Tristeza-continuada.jpg";
+import desesperanza from "../../../assets/images/Pensamiento-desesperanza.jpg";
 
 export function SaludMental() {
   return (
@@ -45,6 +46,8 @@ export function SaludMental() {
               descriptions={[
                 "Son esos momentos en los que sientes que las cosas nunca van a mejorar y que no hay salida a lo que estás viviendo. Es como estar en un túnel oscuro sin ver la luz final. Puedes sentir que tus problemas son demasiado grandes para manejarlos.",
               ]}
+              image={desesperanza}
+              alt="Imagen de una persona con pensamientos de desesperanza"
             />
             <TiposSaludMental
               title="Cambios en el sueño o apetito"
