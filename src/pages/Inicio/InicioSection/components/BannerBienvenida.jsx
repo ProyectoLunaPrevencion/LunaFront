@@ -12,12 +12,12 @@ export function BannerBienvenida() {
       p={{ initial: "7", sm: "9" }}
     >
       <Box
-        maxWidth={{ initial: "90%", sm: "65rem" }}
         style={{
           background: "var(--pink-1)",
           borderRadius: "1rem",
           boxShadow: "var(--shadow-6)",
           width: "100%",
+          maxWidth: "45rem",
         }}
       >
         <Container>
@@ -35,7 +35,7 @@ export function BannerBienvenida() {
               color="pink"
               weight="bold"
             >
-              App Luna, tu espacio seguro
+              App Luna
             </Heading>
             <Flex
               direction="column"

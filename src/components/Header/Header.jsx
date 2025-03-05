@@ -13,7 +13,7 @@ export function Header() {
   useEffect(() => {
     const fetchUserName = async () => {
       try {
-        if (user && user.id) {
+        if (user?.id) {
           const userData = await getUserById(user.id);
           console.log("Datos usuario: ", userData);
           setUserName(userData.nombre);

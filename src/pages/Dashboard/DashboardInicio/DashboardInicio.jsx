@@ -7,7 +7,7 @@ export function DashboardInicio() {
     <Box>
       <Flex>
         <HeaderDashboard />
-        <Box>
+        <Box style={{ flexBasis: "100%" }}>
           <InicioSection />
         </Box>
       </Flex>
