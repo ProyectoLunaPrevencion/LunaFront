@@ -61,6 +61,7 @@ export function Header() {
                 </Button>
               </DropdownMenu.Trigger>
               <DropdownMenu.Content>
+                <DropdownMenu.Item color="pink">Ajustes</DropdownMenu.Item>
                 <DropdownMenu.Item color="pink">
                   Cerrar sesión
                 </DropdownMenu.Item>
