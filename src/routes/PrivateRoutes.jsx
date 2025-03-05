@@ -1,18 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Login } from "../pages/Login/Login";
+import { Routes, Route } from "react-router-dom";
 import { MiRefugio } from "../pages/MiRefugio/MiRefugio";
+import { Ajustes } from "../pages/Ajustes/Ajustes";
 
-function App() {
+export function PrivateRoutes() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route element={<PrivateRoute allowedRoles={["ESTUDIANTE"]} />}>
-          <Route path="/mi-refugio" element={<MiRefugio />} />
-        </Route>
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/mi-refugio" element={<MiRefugio />} />
+      <Route path="/ajustes" element={<Ajustes />} />
+    </Routes>
   );
 }
-
-export default App;

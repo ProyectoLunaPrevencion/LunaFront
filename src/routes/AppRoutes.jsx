@@ -4,8 +4,7 @@ import { Informacion } from "../pages/Informacion/Informacion";
 import { Registro } from "../pages/Registro/Registro";
 import { Login } from "../pages/Login/Login";
 import { MiRefugio } from "../pages/MiRefugio/MiRefugio";
-import PrivateRoute from "./PrivateRoutes";
-
+import { Ajustes } from "../pages/Ajustes/Ajustes";
 
 export default function AppRoutes() {
   return (
@@ -14,9 +13,8 @@ export default function AppRoutes() {
       <Route path="/informacion" element={<Informacion />} />
       <Route path="/registro" element={<Registro />} />
       <Route path="/login" element={<Login />} />
-        <Route element={<PrivateRoute allowedRoles={["ESTUDIANTE"]} />}>
-          <Route path="/mi-refugio" element={<MiRefugio />} />
-        </Route>
+      <Route path="/mi-refugio" element={<MiRefugio />} />
+      <Route path="/ajustes" element={<Ajustes />} />
     </Routes>
   );
 }
