@@ -16,6 +16,7 @@ import { logIn as loginService } from "../../services/authService";
 import { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import { Header } from "../../components/Header/Header.jsx";
+import { SESSION_COOKIE, setCookie } from "../../utils/cookieManager.js";
 
 export function Login() {
   const {
@@ -30,13 +31,14 @@ export function Login() {
       console.log("Respuesta del backend:", response);
 
       const token = response?.token;
-      console.log("Token recibido:", token);
 
       if (!token) {
         throw new Error("Token no recibido");
       }
 
-      localStorage.setItem("token", token);
+      console.log("Token recibido:", token);
+
+      setCookie(SESSION_COOKIE, token);
 
       toast.success("¡Inicio de sesión exitoso!");
     } catch (error) {

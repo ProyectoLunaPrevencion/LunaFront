@@ -1,31 +1,11 @@
 import logoApp from "../../assets/images/Logotipo-AppLuna.png";
 import "../Header/Header.css";
 import { Flex, Box, Text, Button, DropdownMenu, Link } from "@radix-ui/themes";
-import { useEffect, useState, useContext } from "react";
-import { getUserById } from "../../services/authService";
-import { AccessContext } from "../../main";
 import { AvatarIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 
 export function HeaderDashboard() {
-  const { user } = useContext(AccessContext);
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    const fetchUserName = async () => {
-      try {
-        if (user && user.id) {
-          const userData = await getUserById(user.id);
-          console.log("Datos usuario: ", userData);
-          setUserName(userData.nombre);
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    fetchUserName();
-  }, [user]);
-
+  //TODO: change later
+  const userName = "Elena";
   return (
     <Box
       p="5"

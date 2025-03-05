@@ -1,4 +1,5 @@
-import axios from "axios";
+import { axiosClient } from "./clients/axiosClient";
+import { authorizedAxiosClient } from "./clients/authorizedAxiosClient";
 
 export async function Registro({
   nombre,
@@ -9,25 +10,22 @@ export async function Registro({
   grupo,
   password,
 }) {
-  const response = await axios.post(
-    "http://127.0.0.1:8080/api/usuarios/registro",
-    {
-      nombre,
-      apellidos,
-      email,
-      telefono,
-      curso,
-      grupo,
-      password,
-      rol: "ESTUDIANTE",
-    }
-  );
+  const response = await axiosClient.post("/usuarios/registro", {
+    nombre,
+    apellidos,
+    email,
+    telefono,
+    curso,
+    grupo,
+    password,
+    rol: "ESTUDIANTE",
+  });
 
   return response.data;
 }
 
 export async function logIn(params) {
-  const response = await axios.post("http://127.0.0.1:8080/api/auth/login", {
+  const response = await axiosClient.post("/auth/login", {
     email: params.email,
     password: params.password,
   });
@@ -36,8 +34,8 @@ export async function logIn(params) {
 }
 
 export async function getUserById(id_usuario) {
-  const response = await axios.get(
-    `http://127.0.0.1:8080/api/auth/usuarios/${id_usuario}`
+  const response = await authorizedAxiosClient.get(
+    `/auth/usuarios/${id_usuario}`
   );
   return response.data;
 }
