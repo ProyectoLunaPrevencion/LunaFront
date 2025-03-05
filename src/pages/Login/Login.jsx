@@ -12,12 +12,10 @@ import { EnvelopeClosedIcon, LockClosedIcon } from "@radix-ui/react-icons";
 import signupImage from "../../assets/images/Login.jpg";
 import { useForm } from "react-hook-form";
 import { Input } from "../Registro/components/Input/Input";
-import { useNavigate } from "react-router-dom";
 import { logIn as loginService } from "../../services/authService";
 import { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import { Header } from "../../components/Header/Header.jsx";
-import { jwtDecode } from "jwt-decode";
 
 export function Login() {
   const {
@@ -26,13 +24,11 @@ export function Login() {
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate();
-
   const onSubmit = async (data) => {
     try {
       const response = await loginService(data);
       console.log("Respuesta del backend:", response);
-  
+
       const token = response?.token;
       console.log("Token recibido:", token);
 
@@ -42,21 +38,16 @@ export function Login() {
 
       localStorage.setItem("token", token);
 
-      const decoded = jwtDecode(token);
-      console.log("Token decodificado:", decoded);
-
-      const userRole = decoded.rol; 
       toast.success("¡Inicio de sesión exitoso!");
-
-      if (userRole === "ESTUDIANTE") {
-        navigate("/mi-refugio");
-      } else {
-        navigate("/");
-      }
     } catch (error) {
       if (isAxiosError(error)) {
-        console.error("Error en la petición:", error.response?.data || error.message);
-        toast.error(error.response?.data?.mensaje || "Error en el inicio de sesión");
+        console.error(
+          "Error en la petición:",
+          error.response?.data || error.message
+        );
+        toast.error(
+          error.response?.data?.mensaje || "Error en el inicio de sesión"
+        );
       } else {
         console.error("Error desconocido:", error);
         toast.error("Error inesperado en el inicio de sesión");
@@ -113,8 +104,10 @@ export function Login() {
                           registerProps={register("email", {
                             required: "El email es obligatorio",
                             pattern: {
-                              value: /^[a-zA-Z0-9._%+-]+@colegiovirgendelcarmen\.com$/,
-                              message: "El email debe pertenecer a @colegiovirgendelcarmen.com",
+                              value:
+                                /^[a-zA-Z0-9._%+-]+@colegiovirgendelcarmen\.com$/,
+                              message:
+                                "El email debe pertenecer a @colegiovirgendelcarmen.com",
                             },
                           })}
                           errorMessage={errors.email?.message}
@@ -143,7 +136,11 @@ export function Login() {
                           size={{ initial: "1", lg: "1", xl: "2" }}
                         >
                           ¿Aún no tienes cuenta?{" "}
-                          <Link href="/registro" weight="bold" underline="always">
+                          <Link
+                            href="/registro"
+                            weight="bold"
+                            underline="always"
+                          >
                             Regístrate
                           </Link>
                         </Text>

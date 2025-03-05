@@ -10,12 +10,7 @@ import {
   Select,
 } from "@radix-ui/themes";
 import { Header } from "../../components/Header/Header.jsx";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { logIn as loginService } from "../../services/authService";
-import { isAxiosError } from "axios";
-import { toast } from "react-hot-toast";
-import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./MiRefugio.css";
@@ -26,26 +21,17 @@ export function MiRefugio() {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
+    watch,
+    control,
   } = useForm();
 
-  const [startDate, setStartDate] = useState(new Date());
-
-  const navigate = useNavigate();
-
   const onSubmit = async (data) => {
-    try {
-      await loginService(data);
-      toast.success("¡Inicio de sesión exitoso!");
-      navigate("/");
-    } catch (error) {
-      if (isAxiosError(error) && error.response?.data?.message) {
-        toast.error(error.response.data.message);
-      } else {
-        toast.error("Error en el inicio de sesión");
-      }
-      console.error(error);
-    }
+    console.log({ data });
   };
+
+  const motivo = watch("motivo");
+  const donde_lo_vio = watch("donde_lo_vio");
 
   return (
     <>
@@ -129,12 +115,20 @@ export function MiRefugio() {
                                   >
                                     ¿Cuándo pasó?
                                   </Text>
-                                  <DatePicker
-                                    selected={startDate}
-                                    onChange={(date) => setStartDate(date)}
-                                    dateFormat="dd/MM/yyyy"
-                                    wrapperClassName="date-picker-wrapper"
-                                    className="date-picker-input"
+                                  <Controller
+                                    control={control}
+                                    name="date-input"
+                                    render={({ field }) => (
+                                      <DatePicker
+                                        dateFormat="dd/MM/yyyy"
+                                        wrapperClassName="date-picker-wrapper"
+                                        className="date-picker-input"
+                                        onChange={(date) =>
+                                          field.onChange(date)
+                                        }
+                                        selected={field.value}
+                                      />
+                                    )}
                                   />
                                 </Flex>
                               </Box>
@@ -148,6 +142,12 @@ export function MiRefugio() {
                                   </Text>
                                   <Select.Root
                                     size={{ initial: "2", lg: "3", xl: "3" }}
+                                    onValueChange={(value) =>
+                                      setValue("motivo", value)
+                                    }
+                                    {...register("motivo", {
+                                      required: "Este campo es obligatorio",
+                                    })}
                                   >
                                     <Select.Trigger
                                       id="motivo"
@@ -168,6 +168,11 @@ export function MiRefugio() {
                                       </Select.Item>
                                     </Select.Content>
                                   </Select.Root>
+                                  {errors.motivo && !motivo && (
+                                    <Text as="span" color="red" size="1">
+                                      {errors.motivo.message}
+                                    </Text>
+                                  )}
                                 </Flex>
                               </Box>
                               <Box width="100%">
@@ -180,6 +185,12 @@ export function MiRefugio() {
                                   </Text>
                                   <Select.Root
                                     size={{ initial: "2", lg: "3", xl: "3" }}
+                                    onValueChange={(value) =>
+                                      setValue("donde_lo_vio", value)
+                                    }
+                                    {...register("donde_lo_vio", {
+                                      required: "Este campo es obligatorio",
+                                    })}
                                   >
                                     <Select.Trigger
                                       id="donde_lo_vio"
@@ -203,6 +214,11 @@ export function MiRefugio() {
                                       </Select.Item>
                                     </Select.Content>
                                   </Select.Root>
+                                  {errors.donde_lo_vio && !donde_lo_vio && (
+                                    <Text as="span" color="red" size="1">
+                                      {errors.donde_lo_vio.message}
+                                    </Text>
+                                  )}
                                 </Flex>
                               </Box>
                               <Box width="100%">
@@ -217,7 +233,13 @@ export function MiRefugio() {
                                     size={{ initial: "2", lg: "3", xl: "3" }}
                                     id="descripcion"
                                     placeholder="Describe lo ocurrido"
+                                    {...register("descripcion", {
+                                      required: "Este campo es obligatorio",
+                                    })}
                                   />
+                                  <Text as="span" color="red" size="1">
+                                    {errors.descripcion?.message}
+                                  </Text>
                                 </Flex>
                               </Box>
 
