@@ -16,7 +16,9 @@ import { logIn as loginService } from "../../services/authService";
 import { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import { Header } from "../../components/Header/Header.jsx";
-import { SESSION_COOKIE, setCookie } from "../../utils/cookieManager.js";
+import { cookies, SESSION_COOKIE } from "../../utils/cookieManager.js";
+
+const YEAR_IN_MILLISECONDS = 1000 * 60 * 60 * 24 * 365;
 
 export function Login() {
   const {
@@ -38,9 +40,14 @@ export function Login() {
 
       console.log("Token recibido:", token);
 
-      setCookie(SESSION_COOKIE, token);
+      cookies.set(SESSION_COOKIE, token, {
+        expires: new Date(Date.now().getTime() + YEAR_IN_MILLISECONDS),
+        httpOnly: false,
+        secure: false,
+      });
 
       toast.success("¡Inicio de sesión exitoso!");
+      window.location.reload();
     } catch (error) {
       if (isAxiosError(error)) {
         console.error(

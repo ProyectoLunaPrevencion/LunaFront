@@ -2,10 +2,13 @@ import logoApp from "../../assets/images/Logotipo-AppLuna.png";
 import { Flex, Box, Text, Button, DropdownMenu, Link } from "@radix-ui/themes";
 import "./Header.css";
 import { AvatarIcon, ChevronDownIcon } from "@radix-ui/react-icons";
+import { useCurrentUserQuery } from "../../hooks/queries/useCurrentUserQuery";
 
 export function Header() {
-  //TODO: change later
-  const userName = "Elena";
+  const { data: currentUser } = useCurrentUserQuery();
+
+  const userName = currentUser?.nombre;
+
   return (
     <Box width="100%" className="header">
       <Flex p="4" width="100%" align="center" justify="between">
