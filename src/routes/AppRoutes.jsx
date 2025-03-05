@@ -5,6 +5,7 @@ import { Registro } from "../pages/Registro/Registro";
 import { Login } from "../pages/Login/Login";
 import { MiRefugio } from "../pages/MiRefugio/MiRefugio";
 import { Ajustes } from "../pages/Ajustes/Ajustes";
+import { DashboardInicio } from "../pages/Dashboard/DashboardInicio/DashboardInicio";
 
 export default function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ export default function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/mi-refugio" element={<MiRefugio />} />
       <Route path="/ajustes" element={<Ajustes />} />
+      <Route path="/dashboard/inicio" element={<DashboardInicio />} />
     </Routes>
   );
 }
