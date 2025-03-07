@@ -4,6 +4,7 @@ import ansiedad from "../../../assets/images/Ansiedad.jpg";
 import agobio from "../../../assets/images/Agobio.jpg";
 import tristezaContinuada from "../../../assets/images/Tristeza-continuada.jpg";
 import desesperanza from "../../../assets/images/Pensamiento-desesperanza.jpg";
+import dispositivos from "../../../assets/images/Uso-inadecuado-dispositivos.jpg";
 
 export function SaludMental() {
   return (
@@ -68,6 +69,8 @@ export function SaludMental() {
               descriptions={[
                 "Pasas demasiado tiempo frente a las pantallas (redes sociales, videojuegos) descuidando el sueño, la actividad física y las relaciones personales, pudiendo causar ansiedad y sueño.",
               ]}
+              image={dispositivos}
+              alt="Imagen de una persona haciendo un uso inadecuado de su dispositivo"
             />
             <TiposSaludMental
               title="Pareja"

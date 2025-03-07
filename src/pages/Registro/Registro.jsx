@@ -15,7 +15,7 @@ import {
   MobileIcon,
   LockClosedIcon,
 } from "@radix-ui/react-icons";
-import signupImage from "../../assets/images/Registro.jpg";
+import signupImage from "../../assets/images/Login-Registro.jpg";
 import { useForm } from "react-hook-form";
 
 import { Input } from "./components/Input/Input";
@@ -295,7 +295,13 @@ export function Registro() {
           </Box>
 
           <Box width={{ initial: "100%", lg: "50%" }}>
-            <img src={signupImage} alt="Registro" />
+            <Flex
+              wrap="wrap"
+              justify="center"
+              style={{ filter: "brightness(1)", mixBlendMode: "multiply" }}
+            >
+              <img src={signupImage} alt="Registro" />
+            </Flex>
           </Box>
         </Flex>
       </Section>

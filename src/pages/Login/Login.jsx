@@ -9,7 +9,7 @@ import {
   Link,
 } from "@radix-ui/themes";
 import { EnvelopeClosedIcon, LockClosedIcon } from "@radix-ui/react-icons";
-import signupImage from "../../assets/images/Login.jpg";
+import loginImage from "../../assets/images/Login-Registro.jpg";
 import { useForm } from "react-hook-form";
 import { Input } from "../Registro/components/Input/Input";
 import { logIn as loginService } from "../../services/authService";
@@ -162,7 +162,13 @@ export function Login() {
           </Box>
 
           <Box width={{ initial: "100%", lg: "50%" }}>
-            <img src={signupImage} alt="Inicio de sesión" />
+            <Flex
+              wrap="wrap"
+              justify="center"
+              style={{ filter: "brightness(1)", mixBlendMode: "multiply" }}
+            >
+              <img src={loginImage} alt="Inicio de sesión" />
+            </Flex>
           </Box>
         </Flex>
       </Section>
