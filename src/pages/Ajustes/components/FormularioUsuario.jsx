@@ -1,15 +1,15 @@
-import { Flex, Text, Button, Select, Skeleton } from "@radix-ui/themes";
+import { Flex, Text, Button, Select } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
-import { PersonIcon, MobileIcon, LockClosedIcon } from "@radix-ui/react-icons";
+import { PersonIcon, MobileIcon } from "@radix-ui/react-icons";
 import PropTypes from "prop-types";
 import { updateUser } from "../../../services/authService";
 import { InputAjustes } from "./InputAjustes";
+import { useQueryClient } from "@tanstack/react-query";
 
 export function FormularioUsuario({ currentUser }) {
-  const navigate = useNavigate();
+  const queryClient = useQueryClient();
 
   const userId = currentUser.idUsuario;
   const userName = currentUser.nombre;
@@ -36,10 +36,12 @@ export function FormularioUsuario({ currentUser }) {
 
   const onSubmit = async (data) => {
     try {
-      await updateUser(userId, data); // Asegúrate de que esta función envíe los datos al backend y actualice la BBDD
+      await updateUser(userId, data);
 
+      queryClient.invalidateQueries({
+        queryKey: ["currentUser"],
+      });
       toast.success("¡Información actualizada con éxito!");
-      navigate("/");
     } catch (error) {
       if (isAxiosError(error)) {
         toast.error("Hubo un error al actualizar la información");
@@ -47,8 +49,6 @@ export function FormularioUsuario({ currentUser }) {
       console.error(error);
     }
   };
-
-  const password = watch("password", "");
 
   const curso = watch("curso");
   const grupo = watch("grupo");
@@ -69,21 +69,19 @@ export function FormularioUsuario({ currentUser }) {
           errorMessage={errors.nombre?.message}
           Icon={PersonIcon}
         />
-        <Skeleton>
-          <InputAjustes
-            id="apellidos"
-            placeholder="Apellidos"
-            title="Apellidos"
-            registerProps={register("apellidos", {
-              pattern: {
-                value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,
-                message: "El apellido solo puede contener letras y espacios",
-              },
-            })}
-            errorMessage={errors.apellidos?.message}
-            Icon={PersonIcon}
-          />
-        </Skeleton>
+        <InputAjustes
+          id="apellidos"
+          placeholder="Apellidos"
+          title="Apellidos"
+          registerProps={register("apellidos", {
+            pattern: {
+              value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,
+              message: "El apellido solo puede contener letras y espacios",
+            },
+          })}
+          errorMessage={errors.apellidos?.message}
+          Icon={PersonIcon}
+        />
         <InputAjustes
           id="telefono"
           placeholder="Teléfonos"
@@ -150,40 +148,7 @@ export function FormularioUsuario({ currentUser }) {
             )}
           </Flex>
         </Flex>
-        <InputAjustes
-          id="password"
-          placeholder="Cambiar la contraseña"
-          title="Contraseña"
-          infocontent="Debe tener al menos 8 caracteres, 1 minúscula, 1 mayúscula y 1 caracter especial"
-          registerProps={register("password", {
-            minLength: {
-              value: 8,
-              message:
-                "La contraseña debe tener al menos 8 caracteres, 1 minúscula, 1 mayúscula y 1 caracter especial",
-            },
-            pattern: {
-              value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/,
-              message:
-                "La contraseña debe tener al menos 8 caracteres, 1 minúscula, 1 mayúscula y 1 caracter especial",
-            },
-          })}
-          errorMessage={errors.password?.message}
-          Icon={LockClosedIcon}
-          type="password"
-        />
-        <InputAjustes
-          id="passwordRepeat"
-          placeholder="Repite la contraseña"
-          title="Repite la contraseña"
-          infocontent="Debe coincidir con la contraseña anterior"
-          registerProps={register("passwordRepeat", {
-            validate: (value) =>
-              value === password || "Las contraseñas no coinciden",
-          })}
-          errorMessage={errors.passwordRepeat?.message}
-          Icon={LockClosedIcon}
-          type="password"
-        />
+
         <Button size={{ initial: "3", lg: "4", xl: "5" }} type="submit">
           Cambiar esta información
         </Button>

@@ -41,6 +41,6 @@ export async function getUserById(id_usuario) {
 }
 
 export async function updateUser(id, data) {
-  const response = await authorizedAxiosClient.put(`/api/usuarios/${id}`, data);
+  const response = await authorizedAxiosClient.put(`/usuarios/${id}`, data);
   return response.data;
 }
