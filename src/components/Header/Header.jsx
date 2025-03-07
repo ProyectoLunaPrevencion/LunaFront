@@ -3,11 +3,17 @@ import { Flex, Box, Text, Button, DropdownMenu, Link } from "@radix-ui/themes";
 import "./Header.css";
 import { AvatarIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import { useCurrentUserQuery } from "../../hooks/queries/useCurrentUserQuery";
+import { cookies, SESSION_COOKIE } from "../../utils/cookieManager";
 
 export function Header() {
   const { data: currentUser } = useCurrentUserQuery();
 
   const userName = currentUser?.nombre;
+
+  const handleLogout = () => {
+    cookies.remove(SESSION_COOKIE);
+    window.location.reload();
+  };
 
   return (
     <Box width="100%" className="header">
@@ -46,7 +52,7 @@ export function Header() {
               <DropdownMenu.Content>
                 <DropdownMenu.Item color="pink">Ajustes</DropdownMenu.Item>
                 <DropdownMenu.Item color="pink">
-                  Cerrar sesión
+                  <div onClick={handleLogout}>Cerrar sesión</div>
                 </DropdownMenu.Item>
               </DropdownMenu.Content>
             </DropdownMenu.Root>
