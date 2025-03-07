@@ -50,20 +50,22 @@ export function Header() {
                 </Button>
               </DropdownMenu.Trigger>
               <DropdownMenu.Content>
-                <DropdownMenu.Item color="pink">Ajustes</DropdownMenu.Item>
-                <DropdownMenu.Item color="pink">
-                  <button
-                    onClick={handleLogout}
-                    style={{
-                      background: "none",
-                      border: "none",
-                      padding: 0,
-                      cursor: "pointer",
-                    }}
-                  >
+                <Link href="/ajustes" underline="none">
+                  <DropdownMenu.Item color="pink">Ajustes</DropdownMenu.Item>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    padding: 0,
+                    cursor: "pointer",
+                  }}
+                >
+                  <DropdownMenu.Item color="pink">
                     Cerrar sesión
-                  </button>
-                </DropdownMenu.Item>
+                  </DropdownMenu.Item>
+                </button>
               </DropdownMenu.Content>
             </DropdownMenu.Root>
           ) : (
