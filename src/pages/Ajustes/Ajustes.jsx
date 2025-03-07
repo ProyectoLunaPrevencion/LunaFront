@@ -7,15 +7,17 @@ import {
   Text,
   Button,
   Select,
+  Theme,
+  Skeleton,
 } from "@radix-ui/themes";
 import { InputAjustes } from "./components/InputAjustes";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Registro as registroService } from "../../services/authService";
+import { updateUser } from "../../services/authService"; // Asegúrate de tener esta función en tu servicio
 import { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import { PersonIcon, MobileIcon, LockClosedIcon } from "@radix-ui/react-icons";
-import { Theme } from "@radix-ui/themes";
+import { useCurrentUserQuery } from "../../hooks/queries/useCurrentUserQuery";
 
 export function Ajustes() {
   const {
@@ -28,20 +30,24 @@ export function Ajustes() {
 
   const navigate = useNavigate();
 
+  const { data: currentUser } = useCurrentUserQuery();
+
+  const userId = currentUser?.id;
+  const userName = currentUser?.nombre;
+  const userLastName = currentUser?.apellidos;
+  const userPhone = currentUser?.telefono;
+  const userGrade = currentUser?.curso;
+  const userClass = currentUser?.grupo;
+
   const onSubmit = async (data) => {
     try {
-      await registroService(data);
+      await updateUser(userId, data); // Asegúrate de que esta función envíe los datos al backend y actualice la BBDD
 
-      toast.success("¡Registro exitoso! Ahora inicia tu sesión");
+      toast.success("¡Información actualizada con éxito!");
       navigate("/");
     } catch (error) {
-      if (
-        isAxiosError(error) &&
-        error.response?.data?.email?.includes(
-          "Ya existe Usuario con este email."
-        )
-      ) {
-        toast.error("Ya existe un usuario con este email");
+      if (isAxiosError(error)) {
+        toast.error("Hubo un error al actualizar la información");
       }
       console.error(error);
     }
@@ -51,6 +57,21 @@ export function Ajustes() {
 
   const curso = watch("curso");
   const grupo = watch("grupo");
+
+  const getGradePlaceholder = (grade) => {
+    switch (grade) {
+      case "ESO1":
+        return "1º ESO";
+      case "ESO2":
+        return "2º ESO";
+      case "ESO3":
+        return "3º ESO";
+      case "ESO4":
+        return "4º ESO";
+      default:
+        return "Curso";
+    }
+  };
 
   return (
     <>
@@ -120,7 +141,7 @@ export function Ajustes() {
                         >
                           <InputAjustes
                             id="nombre"
-                            placeholder="Nombre"
+                            placeholder={userName}
                             title="Nombre"
                             registerProps={register("nombre", {
                               pattern: {
@@ -132,23 +153,25 @@ export function Ajustes() {
                             errorMessage={errors.nombre?.message}
                             Icon={PersonIcon}
                           />
-                          <InputAjustes
-                            id="apellidos"
-                            placeholder="Apellidos"
-                            title="Apellidos"
-                            registerProps={register("apellidos", {
-                              pattern: {
-                                value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,
-                                message:
-                                  "El apellido solo puede contener letras y espacios",
-                              },
-                            })}
-                            errorMessage={errors.apellidos?.message}
-                            Icon={PersonIcon}
-                          />
+                          <Skeleton>
+                            <InputAjustes
+                              id="apellidos"
+                              placeholder={userLastName}
+                              title="Apellidos"
+                              registerProps={register("apellidos", {
+                                pattern: {
+                                  value: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/,
+                                  message:
+                                    "El apellido solo puede contener letras y espacios",
+                                },
+                              })}
+                              errorMessage={errors.apellidos?.message}
+                              Icon={PersonIcon}
+                            />
+                          </Skeleton>
                           <InputAjustes
                             id="telefono"
-                            placeholder="Teléfono"
+                            placeholder={userPhone || "Teléfono"}
                             title="Teléfono"
                             registerProps={register("telefono", {
                               pattern: {
@@ -178,7 +201,7 @@ export function Ajustes() {
                               >
                                 <Select.Trigger
                                   id="curso"
-                                  placeholder="Curso"
+                                  placeholder={getGradePlaceholder(userGrade)}
                                 />
                                 <Select.Content>
                                   <Select.Item value="ESO1">1º ESO</Select.Item>
@@ -210,7 +233,7 @@ export function Ajustes() {
                               >
                                 <Select.Trigger
                                   id="grupo"
-                                  placeholder="Grupo"
+                                  placeholder={userClass}
                                 />
                                 <Select.Content>
                                   <Select.Item value="A">A</Select.Item>
@@ -228,7 +251,7 @@ export function Ajustes() {
                           </Flex>
                           <InputAjustes
                             id="password"
-                            placeholder="Contraseña"
+                            placeholder="Cambiar la contraseña"
                             title="Contraseña"
                             infocontent="Debe tener al menos 8 caracteres, 1 minúscula, 1 mayúscula y 1 caracter especial"
                             registerProps={register("password", {
@@ -280,10 +303,3 @@ export function Ajustes() {
     </>
   );
 }
-/*- Nombre
-- Apellidos
-- Teléfono
-- Curso
-- Grupo
-- Contraseña
-- Repite la contraseña*/

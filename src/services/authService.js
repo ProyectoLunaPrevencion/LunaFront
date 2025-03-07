@@ -39,3 +39,8 @@ export async function getUserById(id_usuario) {
   );
   return response.data;
 }
+
+export async function updateUser(id, data) {
+  const response = await authorizedAxiosClient.put(`/api/usuarios/${id}`, data);
+  return response.data;
+}
