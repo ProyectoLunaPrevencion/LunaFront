@@ -52,7 +52,17 @@ export function Header() {
               <DropdownMenu.Content>
                 <DropdownMenu.Item color="pink">Ajustes</DropdownMenu.Item>
                 <DropdownMenu.Item color="pink">
-                  <div onClick={handleLogout}>Cerrar sesión</div>
+                  <button
+                    onClick={handleLogout}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      padding: 0,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Cerrar sesión
+                  </button>
                 </DropdownMenu.Item>
               </DropdownMenu.Content>
             </DropdownMenu.Root>
