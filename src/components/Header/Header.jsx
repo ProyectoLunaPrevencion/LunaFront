@@ -20,7 +20,7 @@ export function Header() {
       <Flex p="4" width="100%" align="center" justify="between">
         <Box>
           <Flex justify="start">
-            <a href="/">
+            <a href={userName ? "/dashboard/inicio" : "/"}>
               <img height="50px" src={logoApp} alt="Logo Aplicación Luna" />
             </a>
           </Flex>
@@ -31,7 +31,7 @@ export function Header() {
               Inicio
             </Link>
             <Link
-              href="/informacion"
+              href={userName ? "/dashboard/informacion" : "/informacion"}
               weight="bold"
               style={{ textTransform: "uppercase" }}
             >

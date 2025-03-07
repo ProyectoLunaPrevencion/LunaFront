@@ -5,9 +5,9 @@ import { Registro } from "../pages/Registro/Registro";
 import { Login } from "../pages/Login/Login";
 import { MiRefugio } from "../pages/MiRefugio/MiRefugio";
 import { Ajustes } from "../pages/Ajustes/Ajustes";
-import { DashboardInicio } from "../pages/Dashboard/DashboardInicio/DashboardInicio";
 import { RedirectLoggedUserGuard } from "./guards/RedirectLoggedUserGuard";
 import { RedirectUnauthorizedUserGuard } from "./guards/RedirectUnauthorizedUserGuard";
+import { DashboardInicio } from "../components/Dashboard/DashboardInicio";
 
 export default function AppRoutes() {
   return (
