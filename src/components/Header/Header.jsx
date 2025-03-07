@@ -59,7 +59,6 @@ export function Header() {
                     background: "none",
                     border: "none",
                     padding: 0,
-                    cursor: "pointer",
                   }}
                 >
                   <DropdownMenu.Item color="pink">

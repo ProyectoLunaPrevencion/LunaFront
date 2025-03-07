@@ -1,7 +1,16 @@
 import { Header } from "../../components/Header/Header";
-import { Section, Flex, Box, Heading, Theme, Spinner } from "@radix-ui/themes";
+import {
+  Section,
+  Flex,
+  Box,
+  Heading,
+  Theme,
+  Spinner,
+  Tabs,
+} from "@radix-ui/themes";
 import { useCurrentUserQuery } from "../../hooks/queries/useCurrentUserQuery";
 import { FormularioUsuario } from "./components/FormularioUsuario";
+import { CambiarPassword } from "./components/CambiarPassword";
 
 export function Ajustes() {
   const { data: currentUser } = useCurrentUserQuery();
@@ -64,7 +73,30 @@ export function Ajustes() {
                       width="100%"
                     >
                       {currentUser ? (
-                        <FormularioUsuario currentUser={currentUser} />
+                        <Box width="100%">
+                          <Tabs.Root defaultValue="personal">
+                            <Flex direction="column" gap="4">
+                              <Tabs.List wrap="wrap" justify="center">
+                                <Tabs.Trigger value="personal">
+                                  Información personal
+                                </Tabs.Trigger>
+                                <Tabs.Trigger value="clave">
+                                  Cambiar la contraseña
+                                </Tabs.Trigger>
+                              </Tabs.List>
+                              <Box>
+                                <Tabs.Content value="personal">
+                                  <FormularioUsuario
+                                    currentUser={currentUser}
+                                  />
+                                </Tabs.Content>
+                                <Tabs.Content value="clave">
+                                  <CambiarPassword currentUser={currentUser} />
+                                </Tabs.Content>
+                              </Box>
+                            </Flex>
+                          </Tabs.Root>
+                        </Box>
                       ) : (
                         <Spinner></Spinner>
                       )}
