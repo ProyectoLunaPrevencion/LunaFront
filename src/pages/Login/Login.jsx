@@ -41,7 +41,7 @@ export function Login() {
       console.log("Token recibido:", token);
 
       cookies.set(SESSION_COOKIE, token, {
-        expires: new Date(Date.now().getTime() + YEAR_IN_MILLISECONDS),
+        expires: new Date(new Date().getTime() + YEAR_IN_MILLISECONDS),
         httpOnly: false,
         secure: false,
       });
