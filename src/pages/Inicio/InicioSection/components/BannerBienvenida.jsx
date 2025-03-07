@@ -1,7 +1,12 @@
 import { Box, Container, Flex, Heading, Text, Button } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
+import { useCurrentUserQuery } from "../../../../hooks/queries/useCurrentUserQuery";
 
 export function BannerBienvenida() {
+  const { data: currentUser } = useCurrentUserQuery();
+
+  const userName = currentUser?.nombre;
+
   return (
     <Flex
       className="right-welcome"
@@ -61,19 +66,21 @@ export function BannerBienvenida() {
             >
               Aquí estamos para ayudarte
             </Text>
-            <Box>
-              <Flex
-                gap={{ initial: "5", xs: "8" }}
-                direction={{ initial: "column", xs: "row" }}
-              >
-                <Button asChild size="4">
-                  <Link to="/login">Inicia sesión</Link>
-                </Button>
-                <Button asChild size="4">
-                  <Link to="/registro">Regístrate</Link>
-                </Button>
-              </Flex>
-            </Box>
+            {!userName && (
+              <Box>
+                <Flex
+                  gap={{ initial: "5", xs: "8" }}
+                  direction={{ initial: "column", xs: "row" }}
+                >
+                  <Button asChild size="4">
+                    <Link to="/login">Inicia sesión</Link>
+                  </Button>
+                  <Button asChild size="4">
+                    <Link to="/registro">Regístrate</Link>
+                  </Button>
+                </Flex>
+              </Box>
+            )}
           </Flex>
         </Container>
       </Box>
