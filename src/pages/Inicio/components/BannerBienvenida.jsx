@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Heading, Text, Button } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
-import { useCurrentUserQuery } from "../../../../hooks/queries/useCurrentUserQuery";
+import { useCurrentUserQuery } from "../../../hooks/queries/useCurrentUserQuery";
 
 export function BannerBienvenida() {
   const { data: currentUser } = useCurrentUserQuery();

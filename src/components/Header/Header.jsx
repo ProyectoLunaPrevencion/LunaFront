@@ -4,8 +4,9 @@ import "./Header.css";
 import { AvatarIcon, ChevronDownIcon } from "@radix-ui/react-icons";
 import { useCurrentUserQuery } from "../../hooks/queries/useCurrentUserQuery";
 import { cookies, SESSION_COOKIE } from "../../utils/cookieManager";
+import PropTypes from "prop-types";
 
-export function Header() {
+export function Header({ logoUrl, navItems }) {
   const { data: currentUser } = useCurrentUserQuery();
 
   const userName = currentUser?.nombre;
@@ -20,23 +21,18 @@ export function Header() {
       <Flex p="4" width="100%" align="center" justify="between">
         <Box>
           <Flex justify="start">
-            <a href={userName ? "/dashboard/inicio" : "/"}>
+            <a href={logoUrl}>
               <img height="50px" src={logoApp} alt="Logo Aplicación Luna" />
             </a>
           </Flex>
         </Box>
         <Box>
           <Flex justify="center" gap="4">
-            <Link href="/" weight="bold" style={{ textTransform: "uppercase" }}>
-              Inicio
-            </Link>
-            <Link
-              href={userName ? "/dashboard/informacion" : "/informacion"}
-              weight="bold"
-              style={{ textTransform: "uppercase" }}
-            >
-              Información
-            </Link>
+            {navItems.map((item) => (
+              <Link href={item.href} weight="bold" key={item.label}>
+                {item.label}
+              </Link>
+            ))}
           </Flex>
         </Box>
         <Box>
@@ -79,3 +75,8 @@ export function Header() {
     </Box>
   );
 }
+
+Header.propTypes = {
+  logoUrl: PropTypes.string.isRequired,
+  navItems: PropTypes.array.isRequired,
+};
