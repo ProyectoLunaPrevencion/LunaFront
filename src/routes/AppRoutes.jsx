@@ -15,7 +15,6 @@ import { DashboardGuard } from "./guards/DashboardGuard";
 import { Pizarra } from "../pages/Pizarra/Pizarra";
 import { Notificaciones } from "../pages/Notificaciones/Notificaciones";
 import { AdminGuard } from "./guards/AdminGuard";
-import { CrearPizarra } from "../pages/CrearPizarra/CrearPizarra";
 import { Usuarios } from "../pages/Usuarios/Usuarios";
 
 export default function AppRoutes() {
@@ -76,7 +75,6 @@ export default function AppRoutes() {
         <Route path="ajustes" element={<Ajustes />} />
         <Route path="informacion" element={<Informacion />} />
         <Route path="pizarra" element={<Pizarra />} />
-        <Route path="crear-pizarra" element={<CrearPizarra />} />
         <Route
           element={
             <AdminGuard>

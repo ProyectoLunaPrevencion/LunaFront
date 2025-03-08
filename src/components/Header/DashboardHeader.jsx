@@ -8,10 +8,6 @@ const COMMON_ITEMS = [
     label: "PIZARRA",
     href: "/dashboard/pizarra",
   },
-  {
-    label: "CREAR PIZARRA",
-    href: "/dashboard/crear-pizarra",
-  },
 ];
 
 const ALLOWED_ROLES = ["ORIENTACION"];
