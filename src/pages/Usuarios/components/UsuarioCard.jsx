@@ -8,6 +8,7 @@ import { Card, Box, Flex, Text, Badge, IconButton } from "@radix-ui/themes";
 import PropTypes from "prop-types";
 import { toast } from "react-hot-toast";
 import { EliminarUsuario } from "./EliminarUsuario";
+import { EditarUsuario } from "./EditarUsuario";
 
 export function UsuarioCard({
   idUsuario,
@@ -73,30 +74,32 @@ export function UsuarioCard({
               />
               <Box>
                 <Box>
-                  <Text
-                    size={{ initial: "2", xs: "3", lg: "4", xl: "5" }}
-                    weight="bold"
-                    style={{
-                      color: "var(--pink-a11)",
-                      overflow: "hidden",
-                      whiteSpace: "nowrap",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {nombre}
-                  </Text>
-                  <Text
-                    size={{ initial: "2", xs: "3", lg: "4", xl: "5" }}
-                    weight="bold"
-                    style={{
-                      color: "var(--pink-a11)",
-                      overflow: "hidden",
-                      whiteSpace: "nowrap",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {apellidos}
-                  </Text>
+                  <Flex gap="1">
+                    <Text
+                      size={{ initial: "2", xs: "3", lg: "4", xl: "5" }}
+                      weight="bold"
+                      style={{
+                        color: "var(--pink-a11)",
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {nombre}
+                    </Text>
+                    <Text
+                      size={{ initial: "2", xs: "3", lg: "4", xl: "5" }}
+                      weight="bold"
+                      style={{
+                        color: "var(--pink-a11)",
+                        overflow: "hidden",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {apellidos}
+                    </Text>
+                  </Flex>
                 </Box>
                 <Box>
                   <Flex justify="between" align="center" gap="6">
@@ -185,7 +188,18 @@ export function UsuarioCard({
               align="center"
               style={{ alignItems: "center", justifyContent: "space-evenly" }}
             >
-              <Text> Editar </Text>
+              <EditarUsuario
+                currentUser={{
+                  idUsuario,
+                  nombre,
+                  apellidos,
+                  email,
+                  telefono,
+                  curso,
+                  grupo,
+                  rol,
+                }}
+              />
               <EliminarUsuario idUsuario={idUsuario} />
             </Flex>
           </Box>
