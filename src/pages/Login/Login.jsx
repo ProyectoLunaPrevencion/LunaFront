@@ -17,7 +17,7 @@ import { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import { cookies, SESSION_COOKIE } from "../../utils/cookieManager.js";
 
-const YEAR_IN_MILLISECONDS = 1000 * 60 * 60 * 24 * 365;
+const YEAR_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
 
 export function Login() {
   const {
@@ -29,15 +29,12 @@ export function Login() {
   const onSubmit = async (data) => {
     try {
       const response = await loginService(data);
-      console.log("Respuesta del backend:", response);
 
       const token = response?.token;
 
       if (!token) {
         throw new Error("Token no recibido");
       }
-
-      console.log("Token recibido:", token);
 
       cookies.set(SESSION_COOKIE, token, {
         expires: new Date(new Date().getTime() + YEAR_IN_MILLISECONDS),

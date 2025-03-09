@@ -2,3 +2,11 @@
   background-color: var(--header);
   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
+
+.rt-DropdownMenuSubtriggerIcon {
+  transform: rotate(180deg);
+}
+
+.rt-DropdownMenuShortcut {
+  padding: 0 !important;
+}

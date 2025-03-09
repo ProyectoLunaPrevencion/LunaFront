@@ -173,7 +173,11 @@ export function UsuarioCard({
                       </Text>
                     </Flex>
                   </Box>
-                  <IconButton size="1" onClick={handleCopyEmail}>
+                  <IconButton
+                    size="1"
+                    style={{ cursor: "pointer" }}
+                    onClick={handleCopyEmail}
+                  >
                     <ClipboardCopyIcon />
                   </IconButton>
                 </Flex>
