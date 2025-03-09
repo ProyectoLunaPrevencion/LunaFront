@@ -14,8 +14,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./MiRefugio.css";
 import "../../index.css";
+import { createReporte } from "../../services/reportesServices";
+import { useCurrentUserQuery } from "../../hooks/queries/useCurrentUserQuery";
 
 export function MiRefugio() {
+  const { data: currentUser } = useCurrentUserQuery();
+
   const {
     register,
     handleSubmit,
@@ -26,7 +30,26 @@ export function MiRefugio() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log({ data });
+    if (!currentUser) {
+      console.error("Usuario no autenticado");
+      return;
+    }
+
+    const reporteData = {
+      id_usuario: currentUser.idUsuario,
+      descripcion: data.descripcion,
+      motivo: data.motivo,
+      donde_lo_vio: data.donde_lo_vio,
+      fecha_reporte: data.fecha_reporte,
+      created_at: new Date().toISOString(),
+    };
+
+    try {
+      const response = await createReporte(reporteData);
+      console.log("Reporte creado:", response);
+    } catch (error) {
+      console.error("Error al crear el reporte:", error);
+    }
   };
 
   const motivo = watch("motivo");
@@ -114,9 +137,10 @@ export function MiRefugio() {
                                 </Text>
                                 <Controller
                                   control={control}
-                                  name="date-input"
+                                  name="fecha_reporte"
                                   render={({ field }) => (
                                     <DatePicker
+                                      id="fecha_reporte"
                                       dateFormat="dd/MM/yyyy"
                                       wrapperClassName="date-picker-wrapper"
                                       className="date-picker-input"
