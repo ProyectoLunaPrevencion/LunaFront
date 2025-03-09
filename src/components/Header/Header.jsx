@@ -30,7 +30,7 @@ export function Header({ logoUrl, navItems }) {
             </a>
           </Flex>
         </Box>
-        <Box display={{ initial: "none", sm: "block" }}>
+        <Box display={{ initial: "none", md: "block" }}>
           <Flex justify="center" gap="4">
             {navItems.map((item) => (
               <Link href={item.href} weight="bold" key={item.label}>
@@ -39,7 +39,7 @@ export function Header({ logoUrl, navItems }) {
             ))}
           </Flex>
         </Box>
-        <Box display={{ initial: "none", sm: "block" }}>
+        <Box display={{ initial: "none", md: "block" }}>
           {userName ? (
             <DropdownMenu.Root>
               <DropdownMenu.Trigger>
@@ -75,7 +75,7 @@ export function Header({ logoUrl, navItems }) {
             </Button>
           )}
         </Box>
-        <Box display={{ sm: "none" }} height="40px">
+        <Box display={{ md: "none" }} height="40px">
           <DropdownMenu.Root>
             <DropdownMenu.Trigger>
               <Button>

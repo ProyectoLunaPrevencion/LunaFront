@@ -40,6 +40,7 @@ export function Login() {
         expires: new Date(new Date().getTime() + YEAR_IN_MILLISECONDS),
         httpOnly: false,
         secure: false,
+        path: "/",
       });
 
       toast.success("¡Inicio de sesión exitoso!");
