@@ -39,62 +39,74 @@ export function Usuarios() {
     .sort((a, b) => a.nombre.localeCompare(b.nombre));
 
   return (
-    <Box p="4">
-      <Flex direction="column" gap="6">
+    <Box p="4" style={{ display: "flex", justifyContent: "center" }}>
+      <Flex direction="column" gap="9">
         <Box>
-          <Heading size="4">ESTUDIANTES</Heading>
-          <Grid columns={{ initial: "1", sm: "2", md: "3", lg: "4" }} gap="4">
-            {estudiantes.map((usuario) => (
-              <Box key={usuario.email}>
-                <UsuarioCard
-                  nombre={usuario.nombre}
-                  apellidos={usuario.apellidos}
-                  email={usuario.email}
-                  telefono={usuario.telefono}
-                  curso={usuario.curso}
-                  grupo={usuario.grupo}
-                  rol={usuario.rol}
-                  idUsuario={usuario.idUsuario}
-                />
-              </Box>
-            ))}
-          </Grid>
+          <Flex direction="column" gap="2">
+            <Heading size="4" style={{ color: "var(--orange-9)" }}>
+              ESTUDIANTES
+            </Heading>
+            <Grid columns={{ initial: "1", sm: "2", md: "3", lg: "4" }} gap="4">
+              {estudiantes.map((usuario) => (
+                <Box key={usuario.email}>
+                  <UsuarioCard
+                    nombre={usuario.nombre}
+                    apellidos={usuario.apellidos}
+                    email={usuario.email}
+                    telefono={usuario.telefono}
+                    curso={usuario.curso}
+                    grupo={usuario.grupo}
+                    rol={usuario.rol}
+                    idUsuario={usuario.idUsuario}
+                  />
+                </Box>
+              ))}
+            </Grid>
+          </Flex>
         </Box>
         <Box>
-          <Heading size="4">PROFESORES</Heading>
-          <Grid columns={{ initial: "1", sm: "2", md: "3", lg: "4" }} gap="4">
-            {profesores.map((usuario) => (
-              <Box key={usuario.email}>
-                <UsuarioCard
-                  nombre={usuario.nombre}
-                  apellidos={usuario.apellidos}
-                  email={usuario.email}
-                  telefono={usuario.telefono}
-                  curso={usuario.curso}
-                  grupo={usuario.grupo}
-                  rol={usuario.rol}
-                  idUsuario={usuario.idUsuario}
-                />
-              </Box>
-            ))}
-          </Grid>
+          <Flex direction="column" gap="2">
+            <Heading size="4" style={{ color: "var(--orange-9)" }}>
+              PROFESORES
+            </Heading>
+            <Grid columns={{ initial: "1", sm: "2", md: "3", lg: "4" }} gap="4">
+              {profesores.map((usuario) => (
+                <Box key={usuario.email}>
+                  <UsuarioCard
+                    nombre={usuario.nombre}
+                    apellidos={usuario.apellidos}
+                    email={usuario.email}
+                    telefono={usuario.telefono}
+                    curso={usuario.curso}
+                    grupo={usuario.grupo}
+                    rol={usuario.rol}
+                    idUsuario={usuario.idUsuario}
+                  />
+                </Box>
+              ))}
+            </Grid>
+          </Flex>
         </Box>
         <Box>
-          <Heading size="4">ORIENTACIÓN</Heading>
-          <Grid columns={{ initial: "1", sm: "2", md: "3", lg: "4" }} gap="4">
-            {orientadores.map((usuario) => (
-              <Box key={usuario.email}>
-                <UsuarioCard
-                  nombre={usuario.nombre}
-                  apellidos={usuario.apellidos}
-                  email={usuario.email}
-                  telefono={usuario.telefono}
-                  rol={usuario.rol}
-                  idUsuario={usuario.idUsuario}
-                />
-              </Box>
-            ))}
-          </Grid>
+          <Flex direction="column" gap="2">
+            <Heading size="4" style={{ color: "var(--orange-9)" }}>
+              ORIENTACIÓN
+            </Heading>
+            <Grid columns={{ initial: "1", sm: "2", md: "3", lg: "4" }} gap="4">
+              {orientadores.map((usuario) => (
+                <Box key={usuario.email}>
+                  <UsuarioCard
+                    nombre={usuario.nombre}
+                    apellidos={usuario.apellidos}
+                    email={usuario.email}
+                    telefono={usuario.telefono}
+                    rol={usuario.rol}
+                    idUsuario={usuario.idUsuario}
+                  />
+                </Box>
+              ))}
+            </Grid>
+          </Flex>
         </Box>
       </Flex>
     </Box>

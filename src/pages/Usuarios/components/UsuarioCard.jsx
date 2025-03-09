@@ -54,16 +54,23 @@ export function UsuarioCard({
   };
 
   return (
-    <Box width="100%" maxWidth="350px" p="2">
-      <Card style={{ height: "200px", justifyContent: "space-between" }}>
+    <Box width="100%" maxWidth="350px" p="0">
+      <Card style={{ height: "220px", justifyContent: "space-between" }}>
         <Flex
           direction="column"
-          gap="4"
+          gap="3"
           justify="center"
           align="start"
           style={{ height: "100%", justifyContent: "space-between" }}
         >
-          <Box>
+          <Box
+            width="100%"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+            }}
+          >
             <Flex gap="4" justify="center" align="center">
               <AvatarIcon
                 style={{
@@ -134,6 +141,15 @@ export function UsuarioCard({
                 </Box>
               </Box>
             </Flex>
+            <hr
+              style={{
+                border: "none",
+                height: "1px",
+                background:
+                  "linear-gradient(to right, rgba(255, 192, 203, 0), var(--pink-a11), rgba(255, 192, 203, 0))",
+                width: "100%",
+              }}
+            />
           </Box>
           <Box width="100%">
             <Flex direction="column" gap="1">
