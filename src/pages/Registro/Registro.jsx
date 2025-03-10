@@ -19,10 +19,15 @@ import signupImage from "../../assets/images/Login-Registro.jpg";
 import { useForm } from "react-hook-form";
 
 import { Input } from "./components/Input/Input";
-import { useNavigate } from "react-router-dom";
-import { Registro as registroService } from "../../services/authService";
+import {
+  Registro as registroService,
+  logIn as loginService,
+} from "../../services/authService";
 import { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
+import { cookies, SESSION_COOKIE } from "../../utils/cookieManager.js";
+
+const YEAR_IN_MILLISECONDS = 1000 * 60 * 60 * 24;
 
 export function Registro() {
   const {
@@ -33,14 +38,26 @@ export function Registro() {
     setValue,
   } = useForm();
 
-  const navigate = useNavigate();
-
   const onSubmit = async (data) => {
     try {
       await registroService(data);
+      const response = await loginService(data);
+
+      const token = response?.token;
+
+      if (!token) {
+        throw new Error("Token no recibido");
+      }
+
+      cookies.set(SESSION_COOKIE, token, {
+        expires: new Date(new Date().getTime() + YEAR_IN_MILLISECONDS),
+        httpOnly: false,
+        secure: false,
+        path: "/",
+      });
 
       toast.success("¡Registro exitoso! Ahora inicia tu sesión");
-      navigate("/");
+      window.location.reload();
     } catch (error) {
       if (
         isAxiosError(error) &&
