@@ -13,56 +13,103 @@ export function Footer() {
         gap="6"
       >
         <Box>
-          <Flex direction="column" gap="3">
-            <Text
-              as="p"
-              weight="bold"
-              size={{ initial: "4", md: "4", xl: "6" }}
-            >
-              Desarrolladores
-            </Text>
+          <Flex gap="9">
             <Box>
-              <Flex direction="column" gap="2">
-                <Link
-                  href="https://www.linkedin.com/in/elena-expósito-lara"
-                  underline="hover"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: "white",
-                    textDecorationColor: "white",
-                    textDecorationStyle: "dotted",
-                  }}
+              <Flex direction="column" gap="3">
+                <Text
+                  as="p"
+                  weight="bold"
+                  size={{ initial: "4", md: "4", xl: "3" }}
                 >
-                  <Flex align="center" gap="2">
-                    <LinkedInLogoIcon width="16" height="16"></LinkedInLogoIcon>
-                    <Text as="p" size={{ initial: "2", md: "2", xl: "6" }}>
-                      Elena Expósito Lara
-                    </Text>
+                  Desarrolladores
+                </Text>
+                <Box>
+                  <Flex direction="column" gap="2">
+                    <Link
+                      href="https://www.linkedin.com/in/elena-expósito-lara"
+                      underline="hover"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: "white",
+                        textDecorationColor: "white",
+                        textDecorationStyle: "dotted",
+                      }}
+                    >
+                      <Flex align="center" gap="2">
+                        <LinkedInLogoIcon
+                          width="16"
+                          height="16"
+                        ></LinkedInLogoIcon>
+                        <Text as="p" size={{ initial: "2", md: "2", xl: "3" }}>
+                          Elena Expósito Lara
+                        </Text>
+                      </Flex>
+                    </Link>
+                    <Link
+                      href="https://www.linkedin.com/in/daniel-ronda-morales-b5098321a/"
+                      underline="hover"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: "white",
+                        textDecorationColor: "white",
+                        textDecorationStyle: "dotted",
+                      }}
+                    >
+                      <Flex align="center" gap="2">
+                        <LinkedInLogoIcon
+                          width="16"
+                          height="16"
+                        ></LinkedInLogoIcon>
+                        <Text as="p" size={{ initial: "2", md: "2", xl: "3" }}>
+                          Daniel Ronda Morales
+                        </Text>
+                      </Flex>
+                    </Link>
                   </Flex>
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/in/daniel-ronda-morales-b5098321a/"
-                  underline="hover"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: "white",
-                    textDecorationColor: "white",
-                    textDecorationStyle: "dotted",
-                  }}
+                </Box>
+              </Flex>
+            </Box>
+            <Box>
+              <Flex direction="column" gap="3">
+                <Text
+                  as="p"
+                  weight="bold"
+                  size={{ initial: "4", md: "4", xl: "3" }}
                 >
-                  <Flex align="center" gap="2">
-                    <LinkedInLogoIcon width="16" height="16"></LinkedInLogoIcon>
-                    <Text as="p" size={{ initial: "2", md: "2", xl: "6" }}>
-                      Daniel Ronda Morales
-                    </Text>
+                  Ilustradora
+                </Text>
+                <Box>
+                  <Flex direction="column" gap="2">
+                    <Link
+                      href="https://www.linkedin.com/in/mar%C3%ADa-luisa-ortega-lucena-ba64a7337/"
+                      underline="hover"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: "white",
+                        textDecorationColor: "white",
+                        textDecorationStyle: "dotted",
+                      }}
+                    >
+                      <Flex align="center" gap="2">
+                        <LinkedInLogoIcon
+                          width="16"
+                          height="16"
+                        ></LinkedInLogoIcon>
+                        <Text as="p" size={{ initial: "2", md: "2", xl: "3" }}>
+                          María Luisa Ortega Lucena
+                        </Text>
+                      </Flex>
+                    </Link>
                   </Flex>
-                </Link>
+                </Box>
               </Flex>
             </Box>
           </Flex>
         </Box>
+
         <Box>
           <Flex direction="column" align="center" justify="center" gap="3">
             <img

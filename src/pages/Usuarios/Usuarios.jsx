@@ -39,7 +39,11 @@ export function Usuarios() {
     .sort((a, b) => a.nombre.localeCompare(b.nombre));
 
   return (
-    <Box p="4" style={{ display: "flex", justifyContent: "center" }}>
+    <Box
+      p="4"
+      style={{ display: "flex", justifyContent: "center" }}
+      minHeight="100vh"
+    >
       <Flex direction="column" gap="9">
         <Box>
           <Flex direction="column" gap="2">

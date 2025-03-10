@@ -56,7 +56,7 @@ export function MiRefugio() {
   const donde_lo_vio = watch("donde_lo_vio");
 
   return (
-    <Section p="0" className="mi-refugio">
+    <Section p="0" className="mi-refugio" minHeight="100vh">
       <Container>
         <Box p={{ initial: "5", xs: "7" }}>
           <Flex

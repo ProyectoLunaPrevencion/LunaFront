@@ -11,7 +11,7 @@ export function BannerBienvenida() {
     <Flex
       className="right-welcome"
       width="100%"
-      height="100%"
+      height={{ initial: "50vh", md: "100%" }}
       align="center"
       justify="center"
       p={{ initial: "7", sm: "9" }}
