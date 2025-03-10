@@ -31,7 +31,7 @@ export function Notificaciones() {
         </Heading>
         <Flex direction="column" gap="5" width="100%">
           {reportes.map((reporte) => (
-            <Box key={reporte.email} width="100%">
+            <Box key={reporte.idReporte} width="100%">
               <ReporteCard
                 idReporte={reporte.idReporte}
                 usuario={reporte.usuario}

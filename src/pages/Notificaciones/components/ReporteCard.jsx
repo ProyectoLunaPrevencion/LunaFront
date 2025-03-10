@@ -1,5 +1,7 @@
-import { Card, Box, Flex, Text, Badge } from "@radix-ui/themes";
+import { PlusIcon } from "@radix-ui/react-icons";
+import { Card, Box, Flex, Text, Badge, Button } from "@radix-ui/themes";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router";
 
 export function ReporteCard({
   usuario,
@@ -7,7 +9,10 @@ export function ReporteCard({
   motivo,
   fechaReporte,
   createdAt,
+  idReporte,
 }) {
+  const navigate = useNavigate();
+
   const getBadgeColor = (motivo) => {
     switch (motivo) {
       case "ACOSO":
@@ -41,6 +46,10 @@ export function ReporteCard({
       month: "2-digit",
       year: "numeric",
     });
+  };
+
+  const checkDetails = () => {
+    navigate(`/dashboard/notificaciones/${idReporte}`);
   };
 
   return (
@@ -105,7 +114,12 @@ export function ReporteCard({
                     </Box>
                   </Flex>
                 </Box>
-                <Box>Pendiente</Box>
+                <Button onClick={checkDetails}>
+                  <Flex gap="1">
+                    <PlusIcon width="18px" height="18px" />
+                    <Text size="2">Ver detalles</Text>
+                  </Flex>
+                </Button>
               </Flex>
               <hr
                 style={{
@@ -178,4 +192,5 @@ ReporteCard.propTypes = {
   motivo: PropTypes.string.isRequired,
   fechaReporte: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  idReporte: PropTypes.number.isRequired,
 };

@@ -16,6 +16,7 @@ import { Pizarra } from "../pages/Pizarra/Pizarra";
 import { Notificaciones } from "../pages/Notificaciones/Notificaciones";
 import { AdminGuard } from "./guards/AdminGuard";
 import { Usuarios } from "../pages/Usuarios/Usuarios";
+import { DetallesNotificacion } from "../pages/DetallesNotificacion/DetallesNotificacion";
 
 export default function AppRoutes() {
   return (
@@ -83,6 +84,7 @@ export default function AppRoutes() {
           }
         >
           <Route path="notificaciones" element={<Notificaciones />} />
+          <Route path="notificaciones/:id" element={<DetallesNotificacion />} />
           <Route path="usuarios" element={<Usuarios />} />
         </Route>
       </Route>
