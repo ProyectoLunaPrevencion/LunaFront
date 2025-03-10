@@ -228,7 +228,7 @@ export function MiRefugio() {
                                     <Select.Item value="EN_REDES_SOCIALES">
                                       Por redes sociales
                                     </Select.Item>
-                                    <Select.Item value="OTROS">
+                                    <Select.Item value="OTRO">
                                       Otros
                                     </Select.Item>
                                   </Select.Content>
