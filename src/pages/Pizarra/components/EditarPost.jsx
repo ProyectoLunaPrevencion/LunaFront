@@ -1,15 +1,13 @@
-import { PlusIcon } from "@radix-ui/react-icons";
+import { Pencil2Icon } from "@radix-ui/react-icons";
 import { Dialog, Button, Flex, Text, TextField } from "@radix-ui/themes";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import PropTypes from "prop-types";
-import { createPost } from "../../../services/postsServices";
+import { updatePost } from "../../../services/postsServices";
 import { useQueryClient } from "@tanstack/react-query";
-import { useCurrentUserQuery } from "../../../hooks/queries/useCurrentUserQuery";
 
-export function PizarraButtonsContainer() {
+export function EditarPost({ currentPost }) {
   const queryClient = useQueryClient();
-  const { data: currentUser } = useCurrentUserQuery();
 
   const {
     register,
@@ -17,47 +15,36 @@ export function PizarraButtonsContainer() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      contenido: "",
+      contenido: currentPost.contenido,
     },
   });
 
   const onSubmit = async (data) => {
     try {
-      await createPost({
-        id_usuario: currentUser.idUsuario,
-        contenido: data.contenido,
-        created_at: new Date().toISOString(),
-      });
+      await updatePost(currentPost.idPost, data);
       queryClient.invalidateQueries({
         queryKey: ["posts"],
       });
-      toast.success("¡Post creado con éxito!");
+      toast.success("¡Información actualizada con éxito!");
     } catch (error) {
-      toast.error("Hubo un error al crear el post");
+      toast.error("Hubo un error al actualizar la información");
       console.error(error);
     }
   };
-
-  const canCreatePost =
-    currentUser?.rol === "ORIENTACION" || currentUser?.rol === "PROFESOR";
-
-  if (!canCreatePost) {
-    return null;
-  }
 
   return (
     <Dialog.Root>
       <Dialog.Trigger>
         <Button>
           <Flex gap="1">
-            <PlusIcon width="18px" height="18px" />
-            <Text size="2">Nuevo Post</Text>
+            <Pencil2Icon width="18px" height="18px" />
+            <Text size="2">Editar</Text>
           </Flex>
         </Button>
       </Dialog.Trigger>
 
       <Dialog.Content maxWidth="450px">
-        <Dialog.Title>Crear un nuevo post</Dialog.Title>
+        <Dialog.Title>Editar el post</Dialog.Title>
 
         <form onSubmit={handleSubmit(onSubmit)} style={{ width: "100%" }}>
           <Flex direction="column" gap="3">
@@ -66,17 +53,18 @@ export function PizarraButtonsContainer() {
                 Contenido del post
               </Text>
               <TextField.Root
+                defaultValue={currentPost.contenido}
                 placeholder="Contenido"
                 {...register("contenido", {
-                  maxLength: {
+                  pattern: {
                     value: 280,
                     message: "El contenido no puede superar los 280 caracteres",
                   },
                 })}
               />
-              {errors.contenido && (
+              {errors.nombre && (
                 <Text as="span" color="red" size="1">
-                  {errors.contenido.message}
+                  {errors.nombre.message}
                 </Text>
               )}
             </label>
@@ -89,7 +77,7 @@ export function PizarraButtonsContainer() {
               </Button>
             </Dialog.Close>
             <Dialog.Close>
-              <Button type="submit">Crear</Button>
+              <Button type="submit">Editar</Button>
             </Dialog.Close>
           </Flex>
         </form>
@@ -98,9 +86,9 @@ export function PizarraButtonsContainer() {
   );
 }
 
-PizarraButtonsContainer.propTypes = {
-  currentUser: PropTypes.shape({
-    idUsuario: PropTypes.number.isRequired,
-    rol: PropTypes.string.isRequired,
-  }),
+EditarPost.propTypes = {
+  currentPost: PropTypes.shape({
+    idPost: PropTypes.number.isRequired,
+    contenido: PropTypes.string.isRequired,
+  }).isRequired,
 };

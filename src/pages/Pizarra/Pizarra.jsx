@@ -33,13 +33,23 @@ export function Pizarra() {
       }}
     >
       <Flex direction="column" gap="7" align="center" width="100%">
-        <Heading
-          size={{ initial: "6", lg: "7", xl: "8" }}
-          style={{ color: "var(--orange-9)" }}
-        >
-          Bienvenid@ a la PIZARRA, {userName}{" "}
-          <FaceIcon width="20px" height="20px" />
-        </Heading>
+        <Box>
+          <Flex gap="2">
+            <Heading
+              size={{ initial: "6", lg: "7", xl: "8" }}
+              style={{ color: "var(--orange-9)" }}
+            >
+              Bienvenid@ a la PIZARRA, {userName}
+            </Heading>
+            <Flex align="center">
+              <FaceIcon
+                width="20px"
+                height="20px"
+                style={{ color: "var(--orange-9)" }}
+              />
+            </Flex>
+          </Flex>
+        </Box>
         <PizarraButtonsContainer />
         <Grid columns={{ initial: "1", sm: "2", md: "3" }} gap="4">
           {sortedPosts.map((post) => (
@@ -57,6 +67,3 @@ export function Pizarra() {
     </Box>
   );
 }
-
-/* navbar que tiene filtrar los posts según curso y grupo. Añadir botón para crear posts (solo rol de profesores y orientadores) */
-/* card: id del usuario, contenido y created at, editar y borrar */

@@ -2,8 +2,21 @@ import { AvatarIcon } from "@radix-ui/react-icons";
 import { Badge, Box, Card, Flex, Text } from "@radix-ui/themes";
 import PropTypes from "prop-types";
 import logoApp from "../../../assets/images/Logotipo-AppLuna.png";
+import { EditarPost } from "./EditarPost";
+import { EliminarPost } from "./EliminarPost";
+import { useCurrentUserQuery } from "../../../hooks/queries/useCurrentUserQuery";
 
-export function PostPizarra({ usuario, contenido, createdAt }) {
+export function PostPizarra({ idPost, usuario, contenido, createdAt }) {
+  const { data: currentUser } = useCurrentUserQuery();
+
+  const canEdit =
+    currentUser?.rol === "ORIENTACION" ||
+    currentUser?.idUsuario === usuario.idUsuario;
+
+  const canDelete =
+    currentUser?.rol === "ORIENTACION" ||
+    currentUser?.idUsuario === usuario.idUsuario;
+
   const getBadgeColor = (rol) => {
     switch (rol) {
       case "ESTUDIANTE":
@@ -122,6 +135,27 @@ export function PostPizarra({ usuario, contenido, createdAt }) {
                       </Badge>
                     </Flex>
                   </Box>
+                  <Box width="100%">
+                    <Flex
+                      align="center"
+                      style={{
+                        alignItems: "center",
+                        justifyContent: "space-evenly",
+                      }}
+                    >
+                      {canEdit ? (
+                        <EditarPost
+                          currentPost={{
+                            idPost,
+                            usuario,
+                            contenido,
+                            createdAt,
+                          }}
+                        />
+                      ) : null}
+                      {canDelete ? <EliminarPost idPost={idPost} /> : null}
+                    </Flex>
+                  </Box>
                 </Flex>
               </Text>
             </Flex>
@@ -133,6 +167,7 @@ export function PostPizarra({ usuario, contenido, createdAt }) {
 }
 
 PostPizarra.propTypes = {
+  idPost: PropTypes.number.isRequired,
   usuario: PropTypes.shape({
     idUsuario: PropTypes.number.isRequired,
     nombre: PropTypes.string.isRequired,
