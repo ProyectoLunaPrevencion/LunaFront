@@ -4,6 +4,7 @@ import { useCurrentUserQuery } from "../../hooks/queries/useCurrentUserQuery";
 import { FaceIcon } from "@radix-ui/react-icons";
 import { PostPizarra } from "./components/PostPizarra";
 import { usePostQuery } from "../../hooks/queries/usePostQuery";
+import "./Pizarra.css";
 
 export function Pizarra() {
   const { data: currentUser } = useCurrentUserQuery();
@@ -25,6 +26,7 @@ export function Pizarra() {
 
   return (
     <Box
+      className="pizarra"
       minHeight="100vh"
       style={{
         display: "flex",
@@ -37,16 +39,12 @@ export function Pizarra() {
           <Flex gap="2">
             <Heading
               size={{ initial: "6", lg: "7", xl: "8" }}
-              style={{ color: "var(--orange-9)" }}
+              style={{ color: "white" }}
             >
               Bienvenid@ a la PIZARRA, {userName}
             </Heading>
             <Flex align="center">
-              <FaceIcon
-                width="20px"
-                height="20px"
-                style={{ color: "var(--orange-9)" }}
-              />
+              <FaceIcon width="20px" height="20px" style={{ color: "white" }} />
             </Flex>
           </Flex>
         </Box>

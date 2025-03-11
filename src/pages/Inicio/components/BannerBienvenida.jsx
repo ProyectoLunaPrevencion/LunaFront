@@ -18,7 +18,7 @@ export function BannerBienvenida() {
     >
       <Box
         style={{
-          background: "var(--pink-1)",
+          background: "rgba(255, 255, 255, 0.9)",
           borderRadius: "1rem",
           boxShadow: "var(--shadow-6)",
           width: "100%",
@@ -51,11 +51,11 @@ export function BannerBienvenida() {
                 ¿Te sientes triste continuamente?
               </Text>
               <Text as="p" size={{ initial: "3", sm: "5" }} align="center">
-                ¿Crees que estás recibiendo maltrato por parte de alguna
+                ¿Crees que no estás recibiendo buen trato por parte de alguna
                 persona?
               </Text>
               <Text as="p" size={{ initial: "3", sm: "5" }} align="center">
-                ¿Tienes pensamientos negativos recurrentes?
+                ¿Tienes pensamientos que te causan malestar?
               </Text>
             </Flex>
             <Text

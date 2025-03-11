@@ -1,0 +1,6 @@
+.pizarra {
+  background-image: url("../../assets/images/empty-blackboard.jpg");
+  background-repeat: cover;
+  background-position: center;
+  z-index: -1;
+}
