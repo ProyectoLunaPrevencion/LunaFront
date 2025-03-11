@@ -19,8 +19,8 @@ export function EditarUsuario({ currentUser }) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
     setValue,
+    formState: { errors },
     watch,
   } = useForm({
     defaultValues: {
@@ -30,10 +30,12 @@ export function EditarUsuario({ currentUser }) {
       telefono: currentUser.telefono,
       curso: currentUser.curso,
       grupo: currentUser.grupo,
+      rol: currentUser.rol,
     },
   });
 
   const onSubmit = async (data) => {
+    console.log(data);
     try {
       await updateUser(currentUser.idUsuario, data);
       queryClient.invalidateQueries({
@@ -48,6 +50,8 @@ export function EditarUsuario({ currentUser }) {
 
   const curso = watch("curso");
   const grupo = watch("grupo");
+  const rol = watch("rol");
+  console.log(rol);
 
   return (
     <Dialog.Root>
@@ -202,6 +206,30 @@ export function EditarUsuario({ currentUser }) {
                 )}
               </Flex>
             </Flex>
+            <Flex direction="column" gap="1" width="100%">
+              <Flex gap="1" align="center">
+                <Text as="p" size={{ initial: "2", lg: "3", xl: "5" }}>
+                  Rol
+                </Text>
+              </Flex>
+              <Select.Root
+                onValueChange={(value) => setValue("rol", value)}
+                defaultValue={currentUser.rol}
+                {...register("rol", {})}
+              >
+                <Select.Trigger id="rol" placeholder={currentUser.rol} />
+                <Select.Content>
+                  <Select.Item value="ESTUDIANTE">ESTUDIANTE</Select.Item>
+                  <Select.Item value="ORIENTACION">ORIENTADOR</Select.Item>
+                  <Select.Item value="PROFESOR">PROFESOR</Select.Item>
+                </Select.Content>
+              </Select.Root>
+              {errors.rol && !rol && (
+                <Text as="span" color="red" size="1">
+                  {errors.rol.message}
+                </Text>
+              )}
+            </Flex>
           </Flex>
 
           <Flex gap="3" mt="4" justify="end">
@@ -229,5 +257,6 @@ EditarUsuario.propTypes = {
     telefono: PropTypes.string,
     curso: PropTypes.string,
     grupo: PropTypes.string,
+    rol: PropTypes.string,
   }).isRequired,
 };

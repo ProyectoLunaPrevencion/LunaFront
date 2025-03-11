@@ -77,7 +77,7 @@ export function Ajustes() {
                               <Tabs.Trigger value="personal">
                                 Información personal
                               </Tabs.Trigger>
-                              <Tabs.Trigger value="clave">
+                              <Tabs.Trigger value="clave" disabled>
                                 Cambiar la contraseña
                               </Tabs.Trigger>
                             </Tabs.List>
