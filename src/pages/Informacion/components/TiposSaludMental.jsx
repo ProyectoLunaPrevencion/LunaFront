@@ -7,6 +7,7 @@ import {
   ExclamationTriangleIcon,
   Pencil2Icon,
 } from "@radix-ui/react-icons";
+import pareja from "../../../assets/images/Pareja.jpg";
 
 export function TiposSaludMental({
   title,
@@ -117,28 +118,48 @@ export function TiposSaludMental({
                   ))}
                 </Flex>
               </Box>
-              <Box>
-                <Flex gap="3" direction="column" align="center">
-                  <CardInfo
-                    Icon={Pencil2Icon}
-                    title="Control"
-                    description="Tu pareja quiere decidir por ti (ropa, amistades, redes sociales)"
-                  ></CardInfo>
-                  <CardInfo
-                    Icon={ChatBubbleIcon}
-                    title="Celos excesivos"
-                    description="No confía en ti y te prohíbe hablar con otras personas"
-                  ></CardInfo>
-                  <CardInfo
-                    Icon={ExclamationTriangleIcon}
-                    title="Falta de respeto"
-                    description="Insultos, burlas o humillaciones"
-                  ></CardInfo>
-                  <CardInfo
-                    Icon={BookmarkIcon}
-                    title="Manipulación emocional"
-                    description="Te hace sentir culpable o te amenaza con dejarte si no haces lo que quiere"
-                  ></CardInfo>
+              <Box width="100%">
+                <Flex
+                  gap={{ initial: "1", sm: "6", lg: "9" }}
+                  width="100%"
+                  align="center"
+                  justify="center"
+                  direction={{ initial: "column", sm: "row" }}
+                >
+                  <Flex wrap="wrap">
+                    <img
+                      src={pareja}
+                      alt="Redes Sociales"
+                      style={{
+                        borderRadius: "var(--radius-2)",
+                        height: "300px",
+                        filter: "brightness(1)",
+                        mixBlendMode: "multiply",
+                      }}
+                    />
+                  </Flex>
+                  <Flex gap="3" direction="column" align="center">
+                    <CardInfo
+                      Icon={Pencil2Icon}
+                      title="Control"
+                      description="Tu pareja quiere decidir por ti (ropa, amistades, redes sociales)"
+                    ></CardInfo>
+                    <CardInfo
+                      Icon={ChatBubbleIcon}
+                      title="Celos excesivos"
+                      description="No confía en ti y te prohíbe hablar con otras personas"
+                    ></CardInfo>
+                    <CardInfo
+                      Icon={ExclamationTriangleIcon}
+                      title="Falta de respeto"
+                      description="Insultos, burlas o humillaciones"
+                    ></CardInfo>
+                    <CardInfo
+                      Icon={BookmarkIcon}
+                      title="Manipulación emocional"
+                      description="Te hace sentir culpable o te amenaza con dejarte si no haces lo que quiere"
+                    ></CardInfo>
+                  </Flex>
                 </Flex>
               </Box>
               <Box>

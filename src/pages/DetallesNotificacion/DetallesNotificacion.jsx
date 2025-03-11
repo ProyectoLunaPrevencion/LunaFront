@@ -25,11 +25,30 @@ export function DetallesNotificacion() {
     useSeguimientoReporteQuery({ id: idReporte });
 
   if (isLoadingReporte || isLoadingSeguimiento) {
-    return <Spinner />;
+    return (
+      <Box minHeight="100vh">
+        <Flex align="center" justify="center">
+          <Spinner />
+        </Flex>
+      </Box>
+    );
   }
 
   if (errorReporte) {
-    return <Box>Error: el reporte no existe</Box>;
+    return (
+      <Box minHeight="100vh">
+        <Flex align="center" justify="center">
+          <Heading
+            as="h1"
+            size={{ initial: "7", lg: "8", xl: "9" }}
+            align="center"
+            color="pink"
+          >
+            Error: el reporte no existe
+          </Heading>
+        </Flex>
+      </Box>
+    );
   }
 
   const formatDate = (dateString) => {

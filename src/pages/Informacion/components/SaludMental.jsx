@@ -5,6 +5,7 @@ import agobio from "../../../assets/images/Agobio.jpg";
 import tristezaContinuada from "../../../assets/images/Tristeza-continuada.jpg";
 import desesperanza from "../../../assets/images/Pensamiento-desesperanza.jpg";
 import dispositivos from "../../../assets/images/Uso-inadecuado-dispositivos.jpg";
+import apetito from "../../../assets/images/Cambios-apetito.jpg";
 
 export function SaludMental() {
   return (
@@ -55,6 +56,8 @@ export function SaludMental() {
               descriptions={[
                 "Situaciones continuadas en las que puedes tener dificultades para dormir, para conciliar el sueño o despertarte muchas veces. Tener ingestas de alimentos de forma ansiosa o, por el contrario, pérdida de apetito puede indicar que algo no está bien emocionalmente.",
               ]}
+              image={apetito}
+              alt="Imagen de una persona con cambios en el sueño o apetito"
             />
             <TiposSaludMental
               title="Sensación de agobio"

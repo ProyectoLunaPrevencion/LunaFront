@@ -16,6 +16,7 @@ import "./MiRefugio.css";
 import "../../index.css";
 import { createReporte } from "../../services/reportesServices";
 import { useCurrentUserQuery } from "../../hooks/queries/useCurrentUserQuery";
+import toast from "react-hot-toast";
 
 export function MiRefugio() {
   const { data: currentUser } = useCurrentUserQuery();
@@ -47,8 +48,10 @@ export function MiRefugio() {
     try {
       const response = await createReporte(reporteData);
       console.log("Reporte creado:", response);
+      toast.success("¡Información actualizada con éxito!");
     } catch (error) {
       console.error("Error al crear el reporte:", error);
+      toast.error("Hubo un error al actualizar la información");
     }
   };
 
