@@ -111,6 +111,12 @@ export function Footer() {
         </Box>
 
         <Box>
+          <Text as="p" size={{ initial: "2", md: "2", xl: "3" }}>
+            Proyecto de Software Libre
+          </Text>
+        </Box>
+
+        <Box>
           <Flex direction="column" align="center" justify="center" gap="3">
             <img
               src={LogoCarmen}
